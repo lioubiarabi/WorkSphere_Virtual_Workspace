@@ -51,11 +51,6 @@ body {
     height: 85vh;
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
-}
-
-.sidebar::-webkit-scrollbar {
-  display: none;
 }
 
 .sidebar_header {
@@ -86,12 +81,14 @@ body {
     flex-direction: column;
     gap: 16px;
 }
+
 .toolbar h2 {
     font-size: 24px;
     color: var(--dark-bg);
     font-weight: 700;
     margin: 0;
 }
+
 .toolbar button {
     background: var(--primary-color);
     color: var(--white);
@@ -107,6 +104,7 @@ body {
     justify-content: center;
     font-family: inherit;
 }
+
 .toolbar button:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
@@ -128,11 +126,29 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 8px;
+    overflow-y: scroll;
+}
+
+.unassigned-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.unassigned-list::-webkit-scrollbar-track {
+    background: var(--light-bg);
+    border-radius: 8px;
+}
+
+.unassigned-list::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 8px;
 }
 
 .employee-card {
     display: flex;
     gap: 10px;
+    border: solid 2px var(--dark-bg);
+    padding: 10px;
 }
 
 .employee-card img {
