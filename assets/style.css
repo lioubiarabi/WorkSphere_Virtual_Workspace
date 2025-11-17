@@ -39,17 +39,23 @@ body {
     min-height: 99vh;
 }
 
+/* sidebar */
+
 .sidebar {
     background: var(--white);
     border-radius: 16px;
     padding: 24px;
     box-shadow: 0 4px 20px var(--shadow);
-    height: fit-content;
     position: sticky;
     top: 32px;
-    max-height: 99vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 .sidebar_header {
@@ -113,15 +119,39 @@ body {
     padding: 32px;
     font-style: italic;
     font-size: 15px;
+    display: none;
 }
+
+/* employees list */
+
+.unassigned-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.employee-card {
+    display: flex;
+    gap: 10px;
+}
+
+.employee-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+
 
 .workspace {
     background: var(--white);
     border-radius: 16px;
-    padding: 32px;
+    padding: 24px;
     box-shadow: 0 4px 20px var(--shadow);
+    position: sticky;
+    top: 32px;
     height: 85vh;
 }
+
 
 /* Tablet Portrait */
 @media (max-width: 1023px) {
