@@ -386,7 +386,8 @@
                 <form id="addEmployeeForm" class="modal-form">
                     <div class="form-row photo-section">
                         <div class="photo-preview">
-                            <img id="previewImg" src="https://ui-avatars.com/api/?name=New+User&background=ecf0f1&color=7f8c8d">
+                            <img id="previewImg"
+                                src="https://ui-avatars.com/api/?name=New+User&background=ecf0f1&color=7f8c8d">
                         </div>
                         <div class="photo-input-group">
                             <label for="photoUrl">Photo URL</label>
@@ -424,7 +425,87 @@
                         </div>
                     </div>
 
+                    <hr class="divider">
 
+                    <div class="experience-section">
+                        <div class="exp-header">
+                            <label>Professional Experience</label>
+                            <button type="button" class="exp-header-btn" id="addExpBtn">
+                                + Add Experience
+                            </button>
+                        </div>
+
+                        <div id="experienceList" class="experience-list">
+                            <div class="experience-item">
+                                <button type="button" class="btn-remove-exp">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+
+                                <div class="exp-grid">
+                                    <div class="form-group">
+                                        <label>Position</label>
+                                        <input type="text" name="exp_position" placeholder="Position" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Company</label>
+                                        <input type="text" name="exp_company" placeholder="Company" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Start Date</label>
+                                        <input type="date" name="exp_start" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>End Date</label>
+                                        <input type="date" name="exp_end">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="experience-item">
+                                <button type="button" class="btn-remove-exp">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+
+                                <div class="exp-grid">
+                                    <div class="form-group">
+                                        <label>Position</label>
+                                        <input type="text" name="exp_position" placeholder="Position" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Company</label>
+                                        <input type="text" name="exp_company" placeholder="Company" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Start Date</label>
+                                        <input type="date" name="exp_start" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>End Date</label>
+                                        <input type="date" name="exp_end">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="modal-footer">
+                        <button type="button" class="btn-cancel">Cancel</button>
+                        <button type="submit" class="btn-save">Save Employee</button>
+                    </footer>
                 </form>
             </div>
         </div>

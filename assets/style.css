@@ -265,6 +265,9 @@ body {
     max-height: 90vh;
     overflow-y: auto;
 }
+.modal-content::-webkit-scrollbar {
+    display: none;
+}
 
 .modal-header {
     padding: 20px 24px;
@@ -361,6 +364,110 @@ body {
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
+.divider {
+    border: none;
+    border-top: 1px solid var(--light-bg);
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.exp-header-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: var(--light-bg);
+    color: var(--text-dark);
+}
+
+.exp-header-btn:hover {
+    background: #dfe6e9;
+}
+
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 6px;
+}
+
+.experience-item {
+    background: #f7f9fa;
+    border: 1px solid var(--light-bg);
+    border-radius: 12px;
+    padding: 25px;
+    position: relative; 
+}
+
+.exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.btn-remove-exp {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-remove-exp:hover {
+    background: #ffe0e0;
+    color: var(--accent-red);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.btn-cancel,
+.btn-save {
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s;
+}
+
+.btn-cancel {
+    background: #ffe0e0;
+    color: var(--accent-red);
+}
+
+.btn-cancel:hover {
+    background: #ffcccc;
+}
+
+.btn-save {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-save:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
 
 
 /* Tablet Portrait */
@@ -408,14 +515,15 @@ body {
         /* Stack inputs on mobile */
     }
 
-    .photo-section {
-        flex-direction: column;
-        text-align: center;
-    }
 
     .modal-content {
         height: 100%;
         max-height: 100%;
         border-radius: 0;
+    }
+
+    .exp-grid {
+        grid-template-columns: 1fr; 
+        gap: 10px;
     }
 }
