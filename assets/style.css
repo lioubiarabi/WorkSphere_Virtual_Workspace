@@ -11,7 +11,6 @@
     --white: #ffffff;
     --text-dark: #2c3e50;
     --text-light: #7f8c8d;
-    --border-color: #bdc3c7;
     --shadow: rgba(0, 0, 0, 0.1);
     --shadow-hover: rgba(0, 0, 0, 0.15);
 }
@@ -34,7 +33,7 @@ body {
     margin: 32px auto;
     padding: 0 24px;
     display: grid;
-    grid-template-columns: 350px 1fr;
+    grid-template-columns: 400px 1fr;
     gap: 32px;
     min-height: 99vh;
 }
@@ -146,17 +145,78 @@ body {
 
 .employee-card {
     display: flex;
-    gap: 10px;
-    border: solid 2px var(--dark-bg);
-    padding: 10px;
+    gap: 16px;
+    border: solid 2px #bdc3c7;
+    padding: 16px;
+    align-items: center;
+    border-radius: 16px;
 }
 
 .employee-card img {
     width: 50px;
     height: 50px;
     border-radius: 100%;
+    object-fit: cover;
+    border: solid 2px #bdc3c7;
 }
 
+.employee-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-dark);
+    margin-bottom: 3px;
+}
+
+.employee-role {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.employee-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.btn-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-icon:hover {
+    transform: translateY(-3px);
+}
+
+.btn-assign:hover {
+    color: var(--primary-color);
+    background-color: rgba(46, 204, 113, 0.15);
+}
+.btn-edit:hover {
+    color: var(--secondary-color);
+    background-color: rgba(52, 152, 219, 0.15);
+}
+.btn-delete:hover {
+    color: var(--accent-red);
+    background-color: rgba(231, 76, 60, 0.15);
+}
 
 .workspace {
     background: var(--white);
