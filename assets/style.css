@@ -226,7 +226,11 @@ body {
 }
 
 .workspace {
-    background: var(--white);
+    background: url("./images/workspace.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
     border-radius: 16px;
     padding: 24px;
     box-shadow: 0 4px 20px var(--shadow);
