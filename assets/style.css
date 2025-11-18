@@ -20,6 +20,10 @@
     padding: 0;
 }
 
+*::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -512,7 +516,6 @@ body {
 
     .form-grid {
         grid-template-columns: 1fr;
-        /* Stack inputs on mobile */
     }
 
 
