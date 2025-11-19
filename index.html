@@ -408,6 +408,7 @@
     <script src="./assets/index.js"></script>
     <script>
         let employeeModal = document.getElementById("employeeModal");
+        let expList = document.getElementById("experienceList");
         let closeModal = document.getElementById("closeModal");
         let cancelModal = document.getElementById("cancelModal");
         let addWorkerBtn = document.getElementById("addWorkerBtn");
@@ -418,6 +419,30 @@
         function closeEmployeeModal() {
             employeeModal.classList.toggle("hidden")
             formModal.reset();
+            // reset the experience list:
+            expList.innerHTML = `<div class="experience-item">
+                                <div class="exp-grid">
+                                    <div class="form-group">
+                                        <label>Position</label>
+                                        <input type="text" name="exp_position" placeholder="Position" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Company</label>
+                                        <input type="text" name="exp_company" placeholder="Company" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Start Date</label>
+                                        <input type="date"  name="exp_start" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>End Date</label>
+                                        <input type="date" name="exp_end">
+                                    </div>
+                                </div>
+                            </div>`;
         }
 
         addWorkerBtn.addEventListener("click", openEmployeeModal);
@@ -425,7 +450,6 @@
         cancelModal.addEventListener("click", closeEmployeeModal);
 
         // add experience script
-        let expList = document.getElementById("experienceList");
         document.getElementById("addExpBtn").addEventListener("click", ()=> {
             expList.innerHTML += `
                 <div class="experience-item">
