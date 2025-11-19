@@ -1,4 +1,4 @@
-let formModal = document.getElementById("addEmployeeForm");
+let employeeArray = [];
 
 let regex = {
     profileUrl : /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
@@ -9,6 +9,7 @@ let regex = {
     exp_company: /^[a-zA-Z\s]{3,}$/
 }
 
+let formModal = document.getElementById("addEmployeeForm");
 formModal.addEventListener("input", (e) => {
     let input = e.target;
 
