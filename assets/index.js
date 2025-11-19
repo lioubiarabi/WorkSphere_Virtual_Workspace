@@ -28,6 +28,10 @@ formModal.addEventListener("input", (e) => {
     validate(input, regex[input.getAttribute("name")]);
 })
 
+formModal.addEventListener("submit", (e)=>{
+    e.preventDefault();
+})
+
 // function for validate the inputs
 function validate(input, regex) {
     if (regex.test(input.value)) {
