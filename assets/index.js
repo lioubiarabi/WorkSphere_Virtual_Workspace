@@ -17,6 +17,12 @@ formModal.addEventListener("input", (e) => {
         console.log("hello")
         return;
     }
+    
+    //preview the img
+    if(input.getAttribute("name") == "profileUrl" && validate(input, regex[input.getAttribute("name")])){
+        document.getElementById("previewImg").src = input.value;
+        return;
+    }
 
     validate(input, regex[input.getAttribute("name")]);
 })
