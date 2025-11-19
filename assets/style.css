@@ -389,7 +389,7 @@ body {
 .modal-overlay input,
 .modal-overlay select {
     padding: 10px 12px;
-    border: 1px solid #bdc3c7;
+    border: 1.5px solid #bdc3c7;
     border-radius: 8px;
     font-size: 14px;
     font-family: inherit;
