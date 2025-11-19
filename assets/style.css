@@ -47,7 +47,7 @@ body {
 .sidebar {
     background: var(--white);
     border-radius: 16px;
-    padding: 24px ;
+    padding: 24px;
     box-shadow: 0px 4px 20px var(--shadow);
     position: sticky;
     top: 32px;
@@ -222,7 +222,6 @@ body {
 
 .workspace {
     background: url("./images/workspace.jpg");
-    background-color: white;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -232,9 +231,45 @@ body {
     position: sticky;
     top: 32px;
     height: 85vh;
+
+    /* rooms grid */
+    box-sizing: content-box;
+    display: grid;
+    grid-template-columns: 8fr 3fr 5fr 5fr;
+    grid-template-rows: 3fr 2fr 3fr;
 }
 
-/* --- Employee modal --- */
+.cenference-room {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.reception-room {
+    grid-column: 1/2;
+    grid-row: 2/4;
+}
+
+.archive-room {
+    grid-column: 3/4;
+    grid-row: 1/2;
+}
+
+.security-room {
+    grid-column: 4/5;
+    grid-row: 1/2;
+}
+
+.servers-room {
+    grid-column: 3/4;
+    grid-row: 3/4;
+}
+
+.staff-room {
+    grid-column: 4/5;
+    grid-row: 3/4;
+}
+
+/* Employee modal */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -268,6 +303,7 @@ body {
     max-height: 90vh;
     overflow-y: auto;
 }
+
 .modal-content::-webkit-scrollbar {
     display: none;
 }
@@ -406,7 +442,7 @@ body {
     border: 1px solid var(--light-bg);
     border-radius: 12px;
     padding: 25px;
-    position: relative; 
+    position: relative;
 }
 
 .exp-grid {
@@ -479,7 +515,7 @@ body {
         grid-template-columns: 1fr;
         gap: 24px;
         margin: 24px auto;
-        
+
     }
 
     .sidebar {
@@ -487,9 +523,9 @@ body {
         top: 0;
         max-height: none;
     }
-    
+
     .workspace {
-        height: 60vh; 
+        height: 60vh;
         position: relative;
         top: 0;
     }
@@ -519,8 +555,9 @@ body {
     }
 
     .workspace {
-        height: 50vh; 
-        min-height: 300px;
+        height: 30vh;
+        min-height: 270px;
+
     }
 
     /* modal */
@@ -537,7 +574,7 @@ body {
     }
 
     .exp-grid {
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
         gap: 10px;
     }
 }
