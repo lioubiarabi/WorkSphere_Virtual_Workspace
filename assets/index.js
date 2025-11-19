@@ -5,12 +5,13 @@ let regex = {
     name: /^[a-zA-Z\s]{3,}$/,
     email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
     phone: /^\+212\s?[5-7]\d{8}$/,
-    
+    exp_position: /^[a-zA-Z\s]{3,}$/,
+    exp_company: /^[a-zA-Z\s]{3,}$/
 }
 
 formModal.addEventListener("input", (e) => {
     let input = e.target;
-    validate(input, regex[input.getAttribute("name")])
+    validate(input, regex[input.getAttribute("name")]);
 })
 
 // function for validate the inputs
