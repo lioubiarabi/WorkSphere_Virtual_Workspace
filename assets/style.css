@@ -37,7 +37,7 @@ body {
     margin: 32px auto;
     padding: 0 24px;
     display: grid;
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 2fr 5fr;
     gap: 32px;
     min-height: 99vh;
 }
@@ -47,8 +47,8 @@ body {
 .sidebar {
     background: var(--white);
     border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 20px var(--shadow);
+    padding: 24px ;
+    box-shadow: 0px 4px 20px var(--shadow);
     position: sticky;
     top: 32px;
     height: 85vh;
@@ -222,12 +222,12 @@ body {
 
 .workspace {
     background: url("./images/workspace.jpg");
+    background-color: white;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     overflow: hidden;
     border-radius: 16px;
-    padding: 24px;
     box-shadow: 0 4px 20px var(--shadow);
     position: sticky;
     top: 32px;
@@ -479,12 +479,19 @@ body {
         grid-template-columns: 1fr;
         gap: 24px;
         margin: 24px auto;
+        
     }
 
     .sidebar {
         position: relative;
         top: 0;
         max-height: none;
+    }
+    
+    .workspace {
+        height: 60vh; 
+        position: relative;
+        top: 0;
     }
 }
 
@@ -509,6 +516,11 @@ body {
 
     .toolbar button {
         font-size: 16px;
+    }
+
+    .workspace {
+        height: 50vh; 
+        min-height: 300px;
     }
 
     /* modal */
