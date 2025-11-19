@@ -14,10 +14,7 @@ formModal.addEventListener("input", (e) => {
     let input = e.target;
 
     //skip validating dates until submit
-    if(input.getAttribute("name") == "exp_start" || input.getAttribute("name") == "exp_end") {
-        console.log("hello")
-        return;
-    }
+    if(input.getAttribute("name") == "exp_start" || input.getAttribute("name") == "exp_end") return;
     
     //preview the img
     if(input.getAttribute("name") == "profileUrl" && validate(input, regex[input.getAttribute("name")])){
@@ -30,6 +27,11 @@ formModal.addEventListener("input", (e) => {
 
 formModal.addEventListener("submit", (e)=>{
     e.preventDefault();
+
+    let inputs = formModal.querySelectorAll("input");
+    let newEmployee = {};
+    
+    validate
 })
 
 // function for validate the inputs
