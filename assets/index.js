@@ -11,6 +11,13 @@ let regex = {
 
 formModal.addEventListener("input", (e) => {
     let input = e.target;
+
+    //skip validating dates until submit
+    if(input.getAttribute("name") == "exp_start" || input.getAttribute("name") == "exp_end") {
+        console.log("hello")
+        return;
+    }
+
     validate(input, regex[input.getAttribute("name")]);
 })
 
