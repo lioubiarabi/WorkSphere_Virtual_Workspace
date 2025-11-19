@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="employee-actions">
-                        
+
                         <button class="btn-icon btn-edit">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="employee-actions">
-                        
+
                         <button class="btn-icon btn-edit">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <div class="employee-actions">
-                        
+
                         <button class="btn-icon btn-edit">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -136,7 +136,7 @@
                         </div>
                     </div>
                     <div class="employee-actions">
-                        
+
                         <button class="btn-icon btn-edit">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -169,7 +169,7 @@
                         </div>
                     </div>
                     <div class="employee-actions">
-                        
+
                         <button class="btn-icon btn-edit">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -202,7 +202,7 @@
                         </div>
                     </div>
                     <div class="employee-actions">
-                        
+
                         <button class="btn-icon btn-edit">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -235,7 +235,7 @@
                         </div>
                     </div>
                     <div class="employee-actions">
-                        
+
                         <button class="btn-icon btn-edit">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -268,7 +268,7 @@
                         </div>
                     </div>
                     <div class="employee-actions">
-                        
+
                         <button class="btn-icon btn-edit">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -436,7 +436,7 @@
                     </div>
 
                     <footer class="modal-footer">
-                        <button type="button" class="btn-cancel">Cancel</button>
+                        <button type="button" class="btn-cancel" id="cancelModal">Cancel</button>
                         <button type="submit" class="btn-save">Save Employee</button>
                     </footer>
                 </form>
@@ -446,6 +446,26 @@
     </main>
 
     <script src="./assets/index.js"></script>
+    <script>
+        let employeeModal = document.getElementById("employeeModal");
+        let formModal = document.getElementById("addEmployeeForm");
+        let closeModal = document.getElementById("closeModal");
+        let cancelModal = document.getElementById("cancelModal");
+        let addWorkerBtn = document.getElementById("addWorkerBtn");
+
+        function openEmployeeModal() {
+            employeeModal.classList.toggle("hidden")
+        }
+        function closeEmployeeModal() {
+            employeeModal.classList.toggle("hidden")
+            formModal.reset();
+        }
+
+        addWorkerBtn.addEventListener("click", openEmployeeModal);
+        closeModal.addEventListener("click", closeEmployeeModal);
+        cancelModal.addEventListener("click", closeEmployeeModal);
+
+    </script>
 </body>
 
 </html>
