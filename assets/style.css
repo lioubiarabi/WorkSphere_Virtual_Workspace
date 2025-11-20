@@ -239,32 +239,72 @@ body {
     grid-template-rows: 3fr 2fr 3fr;
 }
 
+.workspace button {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 8px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+}
+
+.workspace button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-hover);
+}
+
 .cenference-room {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-column: 1/2;
     grid-row: 1/2;
 }
 
 .reception-room {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-column: 1/2;
     grid-row: 2/4;
 }
 
 .archive-room {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-column: 3/4;
     grid-row: 1/2;
 }
 
 .security-room {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-column: 4/5;
     grid-row: 1/2;
 }
 
 .servers-room {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-column: 3/4;
     grid-row: 3/4;
 }
 
 .staff-room {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-column: 4/5;
     grid-row: 3/4;
 }
