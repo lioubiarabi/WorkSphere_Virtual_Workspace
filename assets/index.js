@@ -169,6 +169,11 @@ function validate(input, regex) {
     }
 }
 
+// delete an employee
+function deleteEmployee(index) {
+    
+}
+
 // edit an employee
 function edit(index) {
     let employee = employeesArray[index];
