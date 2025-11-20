@@ -26,7 +26,7 @@
             <div class="unassigned-list" id="unassignedList">
 
                 <!-- employees list -->
-                
+
             </div>
 
         </aside>
@@ -39,35 +39,91 @@
             </div>
             <div class="reception-room">
                 <div class="list">
-                    
+
                 </div>
                 <button>+</button>
             </div>
             <div class="archive-room">
                 <div class="list">
-                    
+
                 </div>
                 <button>+</button>
             </div>
             <div class="security-room">
                 <div class="list">
-                    
+
                 </div>
                 <button>+</button>
             </div>
             <div class="staff-room">
                 <div class="list">
-                    
+
                 </div>
                 <button>+</button>
             </div>
             <div class="servers-room">
                 <div class="list">
-                    
+
                 </div>
                 <button>+</button>
             </div>
         </section>
+
+        <!-- Assigning Modal -->
+        <div id="assigningModal" class="modal-overlay">
+            <div class="modal-content modal-small">
+                <header class="modal-header">
+                    <h2>Assign to <span id="targetZoneName" style="color: var(--primary-color);">Room</span></h2>
+                    <button class="btn-close" id="closeAssignModal">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </header>
+
+                <div class="modal-body">
+                    <div class="warning-message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                            </path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <span>There's no emplyee to assign here</span>
+                    </div>
+
+                    <div class="assign-list" id="assignList">
+
+                        <div class="assign-card">
+                            <div class="assign-info">
+                                <img src="https://ui-avatars.com/api/?name=Sarah+Connor&background=random" alt="User">
+                                <div class="text-group">
+                                    <div class="name">halima</div>
+                                    <div class="role">Security</div>
+                                </div>
+                            </div>
+                            <button class="btn-assign-action">Assign</button>
+                        </div>
+
+                        <div class="assign-card">
+                            <div class="assign-info">
+                                <img src="https://ui-avatars.com/api/?name=Sarah+Connor&background=random" alt="User">
+                                <div class="text-group">
+                                    <div class="name">halima</div>
+                                    <div class="role">Security</div>
+                                </div>
+                            </div>
+                            <button class="btn-assign-action">Assign</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Emplyee Modal -->
         <div id="employeeModal" class="modal-overlay hidden">

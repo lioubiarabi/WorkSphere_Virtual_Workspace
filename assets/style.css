@@ -561,7 +561,94 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    display:  none;
+    display: none;
+}
+
+/* Assign Modal */
+.modal-small {
+    max-width: 450px;
+    height: auto;
+    max-height: 80vh;
+}
+
+.modal-body {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: hidden;
+}
+
+.assign-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    max-height: 400px;
+    padding-right: 5px;
+}
+
+.assign-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.assign-list::-webkit-scrollbar-thumb {
+    background: #bdc3c7;
+    border-radius: 4px;
+}
+
+.assign-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: solid 2px #bdc3c7;
+    border-radius: 10px;
+    background: var(--white);
+}
+
+.assign-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.assign-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.text-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-group .name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.text-group .role {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.btn-assign-action {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-assign-action:hover {
+    background-color: var(--primary-dark);
 }
 
 
