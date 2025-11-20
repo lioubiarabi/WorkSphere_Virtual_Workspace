@@ -672,11 +672,29 @@ body {
     border-radius: 6px;
     align-self: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    visibility: hidden;
+    display: none;
 }
 
 .room-zone:hover .room-header{
-    visibility: visible;
+    display: block;
+}
+
+.avatar-group {
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+}
+.mini-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    margin-left: -10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.mini-avatar:hover {
+    transform: translateY(-3px);
+    z-index: 100;
 }
 
 /* Tablet Portrait */
