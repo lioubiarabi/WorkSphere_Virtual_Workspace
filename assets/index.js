@@ -45,8 +45,8 @@ formModal.addEventListener("submit", (e) => {
         let newExp = {};
         let inputs = exp.querySelectorAll("input");
 
-        validate(inputs[0], regex["exp_position"]) ? (newEmployee["exp-position"] = inputs[0].value) : (isValid = false);
-        validate(inputs[1], regex["exp_company"]) ? (newEmployee["exp_company"] = inputs[1].value) : (isValid = false);
+        validate(inputs[0], regex["exp_position"]) ? (newExp["exp-position"] = inputs[0].value) : (isValid = false);
+        validate(inputs[1], regex["exp_company"]) ? (newExp["exp_company"] = inputs[1].value) : (isValid = false);
 
         // validating dates
         let today = new Date();
@@ -65,6 +65,11 @@ formModal.addEventListener("submit", (e) => {
         newEmployee["experiences"].push(newExp);
     });
 
+    if(isValid) {
+        employeesArray.push(newEmployee);
+    } else {
+        
+    }
 })
 
 // function for validate the inputs
