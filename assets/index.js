@@ -31,7 +31,7 @@ function putItems() {
 
     // no found msg when 0 employees
     if (!employeesArray.length) {
-        unassignedList.innerHTML = `<p class="empty-message">No unassigned employees. Click "Add New" to begin.</p>`;
+        document.getElementById("noEmployee").style.display = "block";
         return;
     }
 
