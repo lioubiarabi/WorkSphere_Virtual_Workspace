@@ -6,6 +6,12 @@ function putItems(array) {
 
     // clear the list
     unassignedList.innerHTML = "";
+
+    // no found msg when 0 employees
+    if(!array.length) {
+        unassignedList.innerHTML = `<p class="empty-message">No unassigned employees. Click "Add New" to begin.</p>`;
+        return;
+    }
     
     array.forEach(item=>{
         
