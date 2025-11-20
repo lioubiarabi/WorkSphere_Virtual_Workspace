@@ -303,7 +303,7 @@
         </section>
 
         <!-- Emplyee Modal -->
-        <div id="employeeModal" class="modal-overlay hidden">
+        <div id="employeeModal" class="modal-overlay">
             <div class="modal-content">
                 <header class="modal-header">
                     <h2>Add New Staff</h2>
@@ -317,6 +317,18 @@
                 </header>
 
                 <form id="addEmployeeForm" class="modal-form">
+                    <div id="warningMessage" class="warning-message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                            </path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <span>All fields must be correct</span>
+                    </div>
+
                     <div class="form-row photo-section">
                         <div class="photo-preview">
                             <img id="previewImg"
@@ -383,7 +395,7 @@
 
                                     <div class="form-group">
                                         <label>Start Date</label>
-                                        <input type="date"  name="exp_start" required>
+                                        <input type="date" name="exp_start" required>
                                     </div>
 
                                     <div class="form-group">
@@ -450,7 +462,7 @@
         cancelModal.addEventListener("click", closeEmployeeModal);
 
         // add experience script
-        document.getElementById("addExpBtn").addEventListener("click", ()=> {
+        document.getElementById("addExpBtn").addEventListener("click", () => {
             expList.innerHTML += `
                 <div class="experience-item">
                                 <button type="button" class="btn-remove-exp">
@@ -487,8 +499,8 @@
         });
 
         //remove an experience
-        expList.addEventListener("click", (e)=>{
-            if(e.target.closest(".btn-remove-exp")){
+        expList.addEventListener("click", (e) => {
+            if (e.target.closest(".btn-remove-exp")) {
                 e.target.closest(".experience-item").remove();
             }
         });
