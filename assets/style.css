@@ -636,7 +636,7 @@ body {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: var(--primary-color) ;
+    background: var(--primary-color);
     color: white;
     border: none;
     font-size: 20px;
@@ -671,11 +671,11 @@ body {
     padding: 4px 8px;
     border-radius: 6px;
     align-self: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     display: none;
 }
 
-.room-zone:hover .room-header{
+.room-zone:hover .room-header {
     display: block;
 }
 
@@ -684,14 +684,16 @@ body {
     align-items: center;
     padding-left: 8px;
 }
+
 .mini-avatar {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     border: 2px solid var(--white);
-    margin-left: -10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-left: -20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 .mini-avatar:hover {
     transform: translateY(-3px);
     z-index: 100;
@@ -716,6 +718,11 @@ body {
         height: 60vh;
         position: relative;
         top: 0;
+    }
+
+    .mini-avatar {
+        width: 28px;
+        height: 28px;
     }
 }
 
@@ -764,5 +771,21 @@ body {
     .exp-grid {
         grid-template-columns: 1fr;
         gap: 10px;
+    }
+
+    .room-header {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
+
+    .btn-add {
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+    }
+
+    .mini-avatar {
+        width: 24px;
+        height: 24px;
     }
 }
