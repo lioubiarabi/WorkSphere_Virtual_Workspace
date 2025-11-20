@@ -1,5 +1,17 @@
 let employeesArray = [];
 
+// render the employees function
+function putItems(array) {
+    let unassignedList = document.getElementById("unassignedList");
+
+    // clear the list
+    unassignedList.innerHTML = "";
+    
+    array.forEach(item=>{
+        
+    });
+}
+
 let regex = {
     profileUrl: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
     name: /^[a-zA-Z\s]{3,}$/,
