@@ -17,7 +17,7 @@ let employeesArray = [
 ];
 
 // render the employees function
-(function putItems() {
+function putItems() {
     let unassignedList = document.getElementById("unassignedList");
 
     // clear the list
@@ -64,7 +64,8 @@ let employeesArray = [
                     </div>
                 </div>`;
     });
-})();
+};
+putItems();
 
 let regex = {
     profileUrl: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
@@ -135,8 +136,11 @@ formModal.addEventListener("submit", (e) => {
     });
 
     if (isValid) {
+        // update the unassigned list
         employeesArray.push(newEmployee);
-        console.log(employeesArray)
+        putItems();
+
+        closeEmployeeModal();
     } else {
         // show the warning message
         document.getElementById("warningMessage").style.display = "block";
