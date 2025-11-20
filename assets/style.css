@@ -513,6 +513,7 @@ body {
     gap: 10px;
     display: none;
 }
+
 #noEmployee {
     background-color: #fee2e2;
     color: #854d0e;
@@ -695,6 +696,63 @@ body {
     z-index: 100;
 }
 
+.modal-scroll {
+    padding: 24px;
+    overflow-y: auto;
+    max-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-scroll .header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cv-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--light-bg);
+}
+
+.identity-text h3 {
+    margin: 0 0 6px 0;
+    font-size: 20px;
+    color: var(--text-dark);
+}
+
+.cv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.cv-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cv-item label {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.cv-item .value {
+    font-size: 14px;
+    color: var(--text-dark);
+    font-weight: 500;
+    word-break: break-all;
+}
+
+
+
 /* Tablet Portrait */
 @media (max-width: 1023px) {
     .container {
@@ -783,5 +841,13 @@ body {
     .mini-avatar {
         width: 24px;
         height: 24px;
+    }
+
+    .cv-grid {
+        grid-template-columns: 1fr;
+    }
+    .modal-scroll .header {
+        flex-direction: column;
+        text-align: center;
     }
 }
