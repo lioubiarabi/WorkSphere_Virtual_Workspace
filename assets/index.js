@@ -14,6 +14,9 @@ let formModal = document.getElementById("addEmployeeForm");
 formModal.addEventListener("input", (e) => {
     let input = e.target;
 
+    // remove the worning message when typing
+    document.getElementById("warningMessage").style.display = "none";
+
     //skip validating dates until submit and reset there border colors
     if (input.getAttribute("name") == "exp_start" || input.getAttribute("name") == "exp_end") {
         input.style.borderColor = "#bdc3c7";
@@ -65,10 +68,11 @@ formModal.addEventListener("submit", (e) => {
         newEmployee["experiences"].push(newExp);
     });
 
-    if(isValid) {
+    if (isValid) {
         employeesArray.push(newEmployee);
     } else {
-        
+        // show the warning message
+        document.getElementById("warningMessage").style.display = "block";
     }
 })
 
