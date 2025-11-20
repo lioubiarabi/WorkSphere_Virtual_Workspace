@@ -153,7 +153,14 @@ function validate(input, regex) {
         input.style.borderColor = "#2ecc71";
         return true;
     } else {
-        input.style.borderColor = "red";
+        input.style.borderColor = "#e74c3c";
         return false;
     }
+}
+
+// edit an employee
+function edit(id) {
+    //find the employee index in the employeesarray by id
+    let employeeIndex = employeesArray.findIndex(emp => emp.id == id);
+    
 }
