@@ -29,10 +29,15 @@ formModal.addEventListener("input", (e) => {
 formModal.addEventListener("submit", (e)=>{
     e.preventDefault();
 
-    let inputs = formModal.querySelectorAll("input");
-    let newEmployee = {};
+    let inputs = formModal.querySelectorAll(".photo-section input, .form-grid input, .form-grid select");
+    let newEmployee = {experiences: []};
 
-    validate()
+    inputs.forEach(input =>{
+        let name = input.getAttribute("name");
+        validate(input, regex[name] ) && (newEmployee[name] = input.value);
+    });
+
+    console.log(newEmployee)
 })
 
 // function for validate the inputs
