@@ -220,47 +220,6 @@ body {
     background-color: rgba(231, 76, 60, 0.15);
 }
 
-.workspace {
-    background: url("./images/workspace.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    overflow: hidden;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px var(--shadow);
-    position: sticky;
-    top: 32px;
-    height: 85vh;
-
-    /* rooms grid */
-    box-sizing: content-box;
-    display: grid;
-    grid-template-columns: 8fr 3fr 5fr 5fr;
-    grid-template-rows: 3fr 2fr 3fr;
-}
-
-.workspace button {
-    background: var(--primary-color);
-    color: var(--white);
-    padding: 8px 24px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: inherit;
-}
-
-.workspace button:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--shadow-hover);
-}
-
 .cenference-room {
     display: flex;
     justify-content: center;
@@ -651,6 +610,57 @@ body {
     background-color: var(--primary-dark);
 }
 
+.workspace {
+    background: url("./images/workspace.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px var(--shadow);
+    position: sticky;
+    top: 32px;
+    height: 85vh;
+
+    /* rooms grid */
+    box-sizing: content-box;
+    display: grid;
+    grid-template-columns: 8fr 3fr 5fr 5fr;
+    grid-template-rows: 3fr 2fr 3fr;
+}
+
+.btn-add {
+    position: absolute;
+    bottom: 30px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-color) ;
+    color: white;
+    border: none;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.4);
+}
+
+.btn-add:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-hover);
+}
+
+.room-zone {
+    position: relative;
+    padding: 25px;
+    margin: 4px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
 
 /* Tablet Portrait */
 @media (max-width: 1023px) {
