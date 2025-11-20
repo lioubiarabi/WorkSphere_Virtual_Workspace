@@ -1,4 +1,20 @@
-let employeesArray = [];
+let employeesArray = [
+    {
+        "experiences": [
+            {
+                "exp-position": "manager",
+                "exp_company": "hafdu",
+                "exp_start": "2001-02-11",
+                "exp_end": "2005-01-11"
+            }
+        ],
+        "profileUrl": "https://img.freepik.com/premium-vector/cute-woman-avatar-profile-vector-illustration_1058532-14592.jpg",
+        "name": "halima el hafidy",
+        "role": "manager",
+        "email": "elhafidy.halima06@gmail.com",
+        "phone": "+212611810124"
+    }
+];
 
 // render the employees function
 (function putItems() {
@@ -16,12 +32,12 @@ let employeesArray = [];
     // render the employees
     employeesArray.forEach(item=>{
         unassignedList.innerHTML += `<div class="employee-card">
-                    <img src="https://ui-avatars.com/api/?name=Emily+Davis&background=9b59b6&color=fff&size=128"
+                    <img src="${item.profileUrl}"
                         alt="employee profile" class="employee-avatar">
                     <div class="employee-info">
-                        <div class="employee-name">Emily Davis</div>
+                        <div class="employee-name">${item.name}</div>
                         <div class="employee-role">
-                            <span class="role-badge badge-manager">Manager</span>
+                            <span class="role-badge badge-manager">${item.role}</span>
                         </div>
                     </div>
                     <div class="employee-actions">
@@ -120,6 +136,7 @@ formModal.addEventListener("submit", (e) => {
 
     if (isValid) {
         employeesArray.push(newEmployee);
+        console.log(employeesArray)
     } else {
         // show the warning message
         document.getElementById("warningMessage").style.display = "block";
