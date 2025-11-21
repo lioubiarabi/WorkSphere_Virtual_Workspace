@@ -341,6 +341,12 @@ function assign(zone) {
         case "reception":
             // get the employee for this room
             employees = employeesArray.filter(emp => !emp.assigned).filter(emp => emp.role == "manager" || emp.role == "receptionist" || emp.role == "cleaner");
+
+            // show no employees message when the array is empty
+            if(!employees.length) {
+                document.getElementById("assignWarningMessage").style.display = "block";
+            }
+
             employees.forEach(emp => {
                 assignList.innerHTML += `<div class="assign-card">
                                             <div class="assign-info">
@@ -392,7 +398,7 @@ function assignToRoom(id, room) {
     employeeobject.room = room;
 
     //render the profile in the zone
-    document.querySelector(`.${room}-room .profiles-group`).innerHTML += `<img src="${employeeobject.profileUrl}" class="mini-avatar">`;
+    document.querySelector(`.${room}-room .profiles-group`).innerHTML += `<img src="${employeeobject.profileUrl}" class="mini-avatar" id="assigned-${employeeobject.id}">`;
 
     // close assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
