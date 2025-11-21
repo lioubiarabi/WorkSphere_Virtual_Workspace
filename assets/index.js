@@ -180,18 +180,21 @@ let id = 12;
 // render the employees function
 function putItems() {
     let unassignedList = document.getElementById("unassignedList");
+    
+    // filter the unassinged employees
+    let unassignedEmployees = employeesArray.filter(emp => !emp.assigned)
 
     // clear the list
     unassignedList.innerHTML = "";
 
     // no found msg when 0 employees
-    if (!employeesArray.length) {
+    if (!unassignedEmployees.length) {
         document.getElementById("noEmployee").style.display = "block";
         return;
     }
 
     // render the employees
-    employeesArray.forEach((item, index) => {
+    unassignedEmployees.forEach((item, index) => {
         unassignedList.innerHTML += `<div class="employee-card">
                     <img src="${item.profileUrl}"
                         alt="employee profile" class="employee-avatar">
@@ -347,7 +350,7 @@ function assign(zone) {
                                                     <div class="role">${emp.role}</div>
                                                 </div>
                                             </div>
-                                            <button class="btn-assign-action" onclick="assignToRoom(${emp.id}, ${zone})">Assign</button>
+                                            <button class="btn-assign-action" onclick="assignToRoom(${emp.id}, '${zone}')">Assign</button>
                                         </div>`;
 
             })
@@ -386,6 +389,9 @@ function assignToRoom(id, room) {
     // change the employee state to assigned
     employeesArray[employeeIndex].assigned = true;
     employeesArray[employeeIndex].room = room;
+
+    // close assign modal
+    document.getElementById("assignModal").classList.toggle("hidden");
 }
 
 // delete an employee
