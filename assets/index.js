@@ -329,7 +329,10 @@ function validate(input, regex) {
 function assign(zone) {
     // open the assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
+    document.getElementById("targetZoneName").innerText = zone +  " room";
+    // empty the assign list
     let assignList = document.getElementById("assignList");
+    assignList.innerHTML = "";
     let employees;
     switch (zone) {
         case "reception":
