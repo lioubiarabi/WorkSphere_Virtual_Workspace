@@ -398,7 +398,10 @@ function unassign(id) {
 }
 
 //show employee info in a model
+let targetId;
 function showInfo(id) {
+    targetId = id;
+
     // open info-model
     document.getElementById("CVModal").classList.toggle("hidden");
 
@@ -412,6 +415,16 @@ function showInfo(id) {
     document.getElementById("cvZone").innerHTML = employee.assigned ? employee.room : "unassigned";
     document.getElementById("cvExperiences").innerHTML = employee.experiences.length;
 }
+
+// info model actions
+document.getElementById("btnDeleteProfile").addEventListener("click", () => {
+    deleteEmployee(targetId);
+    document.getElementById("CVModal").classList.toggle("hidden");
+});
+document.getElementById("btnUnassignProfile").addEventListener("click", () => {
+    unassign(targetId);
+    document.getElementById("CVModal").classList.toggle("hidden");
+});
 
 // delete an employee
 function deleteEmployee(id) {
