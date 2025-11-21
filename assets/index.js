@@ -391,6 +391,12 @@ function unassign(id) {
     let employeeobject = employeesArray[employeeIndex];
     employeeobject.assigned = false;
 
+    //remove the profile avatar from the zone
+    document.getElementById(`assigned-${id}`).remove();
+
+    // update
+    putItems();
+
 }
 
 // delete an employee
