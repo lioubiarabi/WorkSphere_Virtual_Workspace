@@ -330,17 +330,25 @@ function validate(input, regex) {
 
 // assign function
 let capacity = {
-    reception: 6, 
+    reception: 6,
     conference: 10,
     archive: 2,
     security: 3,
     servers: 2,
     staff: 8
 };
+const roomMax = { ...capacity };
 function assign(zone) {
     // open the assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
     document.getElementById("targetZoneName").innerText = zone + " room";
+
+    // check if the room reached its capacity
+    if(!capacity[zone]) {
+        document.getElementById("assignWarningMessage").style.display = "block";
+        return;
+    }
+
     // empty the assign list
     let assignList = document.getElementById("assignList");
     assignList.innerHTML = "";
@@ -358,8 +366,7 @@ function assign(zone) {
     let employees = employeesArray.filter(emp => !emp.assigned).filter(emp => permissions[zone].includes(emp.role));
 
     // show no employees message when the array is empty
-    document.getElementById("assignWarningMessage").style.display = "none";
-    if (!employees.length) document.getElementById("assignWarningMessage").style.display = "block";
+    document.getElementById("assignWarningMessage").style.display = employees.length ? "none" : "block";
 
     employees.forEach(emp => {
         assignList.innerHTML += `<div class="assign-card">
