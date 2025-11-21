@@ -206,7 +206,7 @@ function putItems() {
                     </div>
                     <div class="employee-actions">
 
-                        <button class="btn-icon btn-info" onclick="showInfo(${id})">
+                        <button class="btn-icon btn-info" onclick="showInfo(${item.id})">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <line x1="12" y1="16" x2="12" y2="12"></line>
@@ -401,6 +401,16 @@ function unassign(id) {
 function showInfo(id) {
     // open info-model
     document.getElementById("CVModal").classList.toggle("hidden");
+
+    // find the employee
+    let employee = employeesArray.find(emp => emp.id == id);
+    // change the modal info
+    document.getElementById("cvAvatar").src = employee.profileUrl;
+    document.getElementById("cvIdentity").innerHTML = `<h3 id="cvName">${employee.name}</h3> <span class="role-badge badge-${employee.role}" id="cvRole">${employee.role}</span>`;
+    document.getElementById("cvEmail").innerText = employee.email;
+    document.getElementById("cvPhone").innerText = employee.phone;
+    document.getElementById("cvZone").innerHTML = employee.assigned ? employee.room : "unassigned";
+    document.getElementById("cvExperiences").innerHTML = employee.experiences.length;
 }
 
 // delete an employee

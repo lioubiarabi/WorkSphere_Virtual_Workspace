@@ -259,9 +259,8 @@
 
                     <div class="header">
                         <img src="" id="cvAvatar" class="cv-avatar">
-                        <div class="identity-text">
-                            <h3 id="cvName">halima</h3>
-                            <span class="role-badge badge-manager" id="cvRole">Manager</span>
+                        <div class="identity-text" id="cvIdentity">
+                            
                         </div>
                     </div>
 
@@ -388,6 +387,11 @@
         // close assign modal
         document.getElementById("closeAssignModal").addEventListener("click", () => {
             document.getElementById("assignModal").classList.toggle("hidden");
+        })
+
+        // close info model
+        document.getElementById("closeCVModal").addEventListener("click", () => {
+            document.getElementById("CVModal").classList.toggle("hidden");
         })
 
         // add experience script
