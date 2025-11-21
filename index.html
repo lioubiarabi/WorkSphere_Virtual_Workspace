@@ -45,18 +45,17 @@
             <div class="room-zone cenference-room">
                 <div class="room-header">Conference</div>
                 <div class="profiles-group">
-                    <img src="https://ui-avatars.com/api/?name=Alice&background=random" alt="User" class="mini-avatar">
-                    <img src="https://ui-avatars.com/api/?name=Bob&background=random" alt="User" class="mini-avatar">
+
                 </div>
-                <button class="btn-add" title="Assign Staff">+</button>
+                <button class="btn-add" onclick="assign('Conference')">+</button>
             </div>
 
             <div class="room-zone reception-room">
                 <div class="room-header">Reception</div>
                 <div class="profiles-group">
-                    <img src="https://ui-avatars.com/api/?name=Sarah&background=random" alt="User" class="mini-avatar">
+
                 </div>
-                <button class="btn-add">+</button>
+                <button class="btn-add" onclick="assign('reception')">+</button>
             </div>
 
             <div class="room-zone archive-room">
@@ -64,33 +63,31 @@
                 <div class="profiles-group">
 
                 </div>
-                <button class="btn-add">+</button>
+                <button class="btn-add" onclick="assign('archive')">+</button>
             </div>
 
             <div class="room-zone security-room">
                 <div class="room-header">Security</div>
                 <div class="profiles-group">
-                    <img src="https://ui-avatars.com/api/?name=Mike&background=random" alt="User" class="mini-avatar">
+                    <img src="https://avatar.iran.liara.run/public" class="mini-avatar">
                 </div>
-                <button class="btn-add">+</button>
+                <button class="btn-add" onclick="assign('security')">+</button>
             </div>
 
             <div class="room-zone staff-room">
                 <div class="room-header">Staff Room</div>
                 <div class="profiles-group">
-                    <img src="https://ui-avatars.com/api/?name=Jane&background=random" alt="User" class="mini-avatar">
-                    <img src="https://ui-avatars.com/api/?name=Tom&background=random" alt="User" class="mini-avatar">
+                    
                 </div>
-                <button class="btn-add">+</button>
+                <button class="btn-add" onclick="assign('staff')">+</button>
             </div>
 
             <div class="room-zone servers-room">
                 <div class="room-header">Servers</div>
                 <div class="profiles-group">
-                    <img src="https://ui-avatars.com/api/?name=Jane&background=random" alt="User" class="mini-avatar">
-                    <img src="https://ui-avatars.com/api/?name=Tom&background=random" alt="User" class="mini-avatar">
+
                 </div>
-                <button class="btn-add">+</button>
+                <button class="btn-add" onclick="assign('servers')">+</button>
             </div>
         </section>
 
@@ -265,7 +262,7 @@
 
         <!-- CV Modal -->
 
-        <div id="CVlModal" class="modal-overlay">
+        <div id="CVModal" class="modal-overlay hidden">
             <div class="modal-content">
 
                 <header class="modal-header">
