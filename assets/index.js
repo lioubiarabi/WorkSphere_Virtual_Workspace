@@ -422,15 +422,17 @@ function unassign(id) {
 }
 
 //show employee info in a model
-let targetId;
+let targetId, targetRoom;
 function showInfo(id) {
-    targetId = id;
-
     // open info-model
     document.getElementById("CVModal").classList.toggle("hidden");
 
     // find the employee
     let employee = employeesArray.find(emp => emp.id == id);
+
+    targetId = id;
+    targetRoom = employee.room;
+
     // change the modal info
     document.getElementById("cvAvatar").src = employee.profileUrl;
     document.getElementById("cvIdentity").innerHTML = `<h3 id="cvName">${employee.name}</h3> <span class="role-badge badge-${employee.role}" id="cvRole">${employee.role}</span>`;
@@ -445,7 +447,7 @@ function showInfo(id) {
 
 // info model actions
 document.getElementById("btnDeleteProfile").addEventListener("click", () => {
-    deleteEmployee(targetId);
+    deleteEmployee(targetId, targetRoom);
     document.getElementById("CVModal").classList.toggle("hidden");
 });
 document.getElementById("btnUnassignProfile").addEventListener("click", () => {
@@ -454,13 +456,19 @@ document.getElementById("btnUnassignProfile").addEventListener("click", () => {
 });
 
 // delete an employee
-function deleteEmployee(id) {
+function deleteEmployee(id, room) {
     if (confirm("are you sure?")) {
         employeesArray = employeesArray.filter(e => e.id !== id);
 
-        // 
+        // if the profile exist in the zone remove it
         let profile = document.getElementById(`assigned-${id}`);
         if (profile) profile.remove();
+
+        // change the capacity and change zone color in case the emplyee is assigned
+        if (room) {
+            capacity[room]++;
+            document.querySelector(`.${room}-room`).style.background = capacity[room] ? "#ecf0f1" : "#ffcccc";
+        }
 
         //update
         putItems();
