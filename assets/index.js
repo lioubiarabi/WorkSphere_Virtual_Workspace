@@ -180,7 +180,7 @@ let id = 12;
 // render the employees function
 function putItems() {
     let unassignedList = document.getElementById("unassignedList");
-    
+
     // filter the unassinged employees
     let unassignedEmployees = employeesArray.filter(emp => !emp.assigned)
 
@@ -332,23 +332,29 @@ function validate(input, regex) {
 function assign(zone) {
     // open the assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
-    document.getElementById("targetZoneName").innerText = zone +  " room";
+    document.getElementById("targetZoneName").innerText = zone + " room";
     // empty the assign list
     let assignList = document.getElementById("assignList");
     assignList.innerHTML = "";
-    let employees;
-    switch (zone) {
-        case "reception":
-            // get the employee for this room
-            employees = employeesArray.filter(emp => !emp.assigned).filter(emp => emp.role == "manager" || emp.role == "receptionist" || emp.role == "cleaner");
 
-            // show no employees message when the array is empty
-            if(!employees.length) {
-                document.getElementById("assignWarningMessage").style.display = "block";
-            }
+    // get the employee for the room
+    let permissions = {
+        reception: ["manager", "receptionist", "cleaner"],
+        conference: ["manager", "receptionist", "it_technician", "security", "cleaner"],
+        archive: ["manager", "receptionist", "it_technician", "security"],
+        security: ["manager", "security", "cleaner"],
+        servers: ["manager", "it_technician", "cleaner"],
+        staff: ["manager", "receptionist", "it_technician", "security", "cleaner"]
+    };
 
-            employees.forEach(emp => {
-                assignList.innerHTML += `<div class="assign-card">
+    let employees = employeesArray.filter(emp => !emp.assigned).filter(emp => permissions[zone].includes(emp.role));
+
+    // show no employees message when the array is empty
+    document.getElementById("assignWarningMessage").style.display = "none";
+    if (!employees.length) document.getElementById("assignWarningMessage").style.display = "block";
+
+    employees.forEach(emp => {
+        assignList.innerHTML += `<div class="assign-card">
                                             <div class="assign-info">
                                                 <img src="${emp.profileUrl}">
                                                 <div class="text-group">
@@ -359,40 +365,14 @@ function assign(zone) {
                                             <button class="btn-assign-action" onclick="assignToRoom(${emp.id}, '${zone}')">Assign</button>
                                         </div>`;
 
-            })
-
-            break;
-
-        case "confrenece":
-
-            break;
-
-        case "archive":
-
-            break;
-
-        case "security":
-
-            break;
-
-        case "staff":
-
-            break;
-
-        case "servers":
-
-            break;
-
-        default:
-            break;
-    }
+    })
 }
 
 // assign to room function
 function assignToRoom(id, room) {
     let employeeIndex = employeesArray.findIndex(emp => emp.id == id);
     let employeeobject = employeesArray[employeeIndex];
-    
+
     // change the employee state to assigned
     employeeobject.assigned = true;
     employeeobject.room = room;
