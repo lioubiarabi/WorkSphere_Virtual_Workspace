@@ -1,5 +1,6 @@
 let employeesArray = [
     {
+        "id": 1,
         "experiences": [
             {
                 "exp_position": "manager",
@@ -21,6 +22,7 @@ let employeesArray = [
         "phone": "+212611810124"
     }
 ];
+let id = 2;
 
 // render the employees function
 function putItems() {
@@ -175,7 +177,10 @@ function assign(zone) {
     document.getElementById("assignModal").classList.toggle("hidden");
     switch (zone) {
         case "reception":
-            
+            // get the employee for this room
+            let employees = employeesArray.filter((emp, index)=> {
+
+            });
 
             break;
 
