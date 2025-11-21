@@ -20,9 +20,162 @@ let employeesArray = [
         "role": "manager",
         "email": "elhafidy.halima06@gmail.com",
         "phone": "+212611810124"
+    },
+    {
+        "id": 2,
+        "experiences": [
+            {
+                "exp_position": "Network Admin",
+                "exp_company": "Maroc Telecom",
+                "exp_start": "2018-03-15",
+                "exp_end": "2022-08-20"
+            }
+        ],
+        "profileUrl": "https://ui-avatars.com/api/?name=Ahmed+Benali&background=3498db&color=fff",
+        "name": "Ahmed Benali",
+        "role": "it_technician",
+        "email": "ahmed.benali@worksphere.com",
+        "phone": "+212661234567"
+    },
+    {
+        "id": 3,
+        "experiences": [
+            {
+                "exp_position": "Front Desk",
+                "exp_company": "Sofitel",
+                "exp_start": "2019-01-10",
+                "exp_end": "2023-02-28"
+            }
+        ],
+        "profileUrl": "https://ui-avatars.com/api/?name=Sarah+Amrani&background=e67e22&color=fff",
+        "name": "Sarah Amrani",
+        "role": "receptionist",
+        "email": "sarah.amrani@worksphere.com",
+        "phone": "+212663987654"
+    },
+    {
+        "id": 4,
+        "experiences": [
+            {
+                "exp_position": "Security Agent",
+                "exp_company": "G4S Maroc",
+                "exp_start": "2015-06-01",
+                "exp_end": "2020-12-31"
+            }
+        ],
+        "profileUrl": "https://ui-avatars.com/api/?name=Karim+Tazi&background=2c3e50&color=fff",
+        "name": "Karim Tazi",
+        "role": "security",
+        "email": "karim.tazi@worksphere.com",
+        "phone": "+212661112233"
+    },
+    {
+        "id": 5,
+        "experiences": [],
+        "profileUrl": "https://ui-avatars.com/api/?name=Layla+Idrissi&background=9b59b6&color=fff",
+        "name": "Layla Idrissi",
+        "role": "staff",
+        "email": "layla.idrissi@worksphere.com",
+        "phone": "+212662223344"
+    },
+    {
+        "id": 6,
+        "experiences": [
+            {
+                "exp_position": "Team Lead",
+                "exp_company": "OCP Group",
+                "exp_start": "2010-09-01",
+                "exp_end": "2019-05-15"
+            }
+        ],
+        "profileUrl": "https://ui-avatars.com/api/?name=Omar+Berrada&background=2ecc71&color=fff",
+        "name": "Omar Berrada",
+        "role": "manager",
+        "email": "omar.berrada@worksphere.com",
+        "phone": "+212661998877"
+    },
+    {
+        "id": 7,
+        "experiences": [
+            {
+                "exp_position": "Housekeeping",
+                "exp_company": "Hygiene Plus",
+                "exp_start": "2020-02-01",
+                "exp_end": "2023-01-01"
+            }
+        ],
+        "profileUrl": "https://ui-avatars.com/api/?name=Fatima+Zahra&background=1abc9c&color=fff",
+        "name": "Fatima Zahra",
+        "role": "cleaner",
+        "email": "fatima.zahra@worksphere.com",
+        "phone": "+212667776655"
+    },
+    {
+        "id": 8,
+        "experiences": [
+            {
+                "exp_position": "DevOps Engineer",
+                "exp_company": "Casanet",
+                "exp_start": "2021-01-15",
+                "exp_end": "2023-06-30"
+            }
+        ],
+        "profileUrl": "https://ui-avatars.com/api/?name=Youssef+Alami&background=3498db&color=fff",
+        "name": "Youssef Alami",
+        "role": "it_technician",
+        "email": "youssef.alami@worksphere.com",
+        "phone": "+212661445566"
+    },
+    {
+        "id": 9,
+        "experiences": [
+            {
+                "exp_position": "Junior Accountant",
+                "exp_company": "Fiduciaire",
+                "exp_start": "2022-03-01",
+                "exp_end": "2023-09-01"
+            }
+        ],
+        "profileUrl": "https://ui-avatars.com/api/?name=Amina+Chraibi&background=9b59b6&color=fff",
+        "name": "Amina Chraibi",
+        "role": "staff",
+        "email": "amina.chraibi@worksphere.com",
+        "phone": "+212662889900"
+    },
+    {
+        "id": 10,
+        "experiences": [
+            {
+                "exp_position": "Bouncer",
+                "exp_company": "Club 55",
+                "exp_start": "2018-06-01",
+                "exp_end": "2021-06-01"
+            }
+        ],
+        "profileUrl": "https://ui-avatars.com/api/?name=Hassan+Moussa&background=2c3e50&color=fff",
+        "name": "Hassan Moussa",
+        "role": "security",
+        "email": "hassan.moussa@worksphere.com",
+        "phone": "+212661000111"
+    },
+    {
+        "id": 11,
+        "experiences": [
+            {
+                "exp_position": "Secretary",
+                "exp_company": "Law Firm",
+                "exp_start": "2017-04-10",
+                "exp_end": "2020-04-10"
+            }
+        ],
+        "profileUrl": "https://ui-avatars.com/api/?name=Nadia+Kabbaj&background=e67e22&color=fff",
+        "name": "Nadia Kabbaj",
+        "role": "receptionist",
+        "email": "nadia.kabbaj@worksphere.com",
+        "phone": "+212663221144"
     }
 ];
-let id = 2;
+let id = 12;
 
 // render the employees function
 function putItems() {
@@ -45,7 +198,7 @@ function putItems() {
                     <div class="employee-info">
                         <div class="employee-name">${item.name}</div>
                         <div class="employee-role">
-                            <span class="role-badge badge-manager">${item.role}</span>
+                            <span class="role-badge badge-${item.role}">${item.role}</span>
                         </div>
                     </div>
                     <div class="employee-actions">
@@ -115,7 +268,7 @@ document.getElementById("addWorkerBtn").addEventListener("click", () => {
         e.preventDefault();
 
         let inputs = formModal.querySelectorAll(".photo-section input, .form-grid input, .form-grid select");
-        let newEmployee = { experiences: [] }, isValid = true;
+        let newEmployee = {id: id, experiences: [] }, isValid = true;
 
         inputs.forEach(input => {
             let name = input.getAttribute("name");
@@ -151,6 +304,7 @@ document.getElementById("addWorkerBtn").addEventListener("click", () => {
             // update the unassigned list
             employeesArray.push(newEmployee);
             putItems();
+            id++;
 
             closeEmployeeModal();
         } else {
@@ -175,12 +329,11 @@ function validate(input, regex) {
 function assign(zone) {
     // open the assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
+    let employees;
     switch (zone) {
         case "reception":
             // get the employee for this room
-            let employees = employeesArray.filter((emp, index)=> {
-
-            });
+            employees = employeesArray.filter(emp=> emp.role == "manager" || emp.role == "receptionist" || emp.role == "cleaner");
 
             break;
 

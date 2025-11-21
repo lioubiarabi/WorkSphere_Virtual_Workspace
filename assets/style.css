@@ -173,8 +173,36 @@ body {
     border-radius: 8px;
     font-size: 12px;
     font-weight: 600;
-    background: var(--primary-color);
     color: var(--white);
+}
+
+.badge-manager {
+    background: var(--primary-color);
+}
+
+.badge-it_technician {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.badge-receptionist {
+    background-color: var(--accent-orange);
+    color: white;
+}
+
+.badge-security {
+    background-color: var(--dark-bg);
+    color: white;
+}
+
+.badge-cleaner {
+    background-color: #16a085;
+    color: white;
+}
+
+.badge-staff {
+    background-color: #95a5a6;
+    color: white;
 }
 
 .employee-actions {
@@ -846,6 +874,7 @@ body {
     .cv-grid {
         grid-template-columns: 1fr;
     }
+
     .modal-scroll .header {
         flex-direction: column;
         text-align: center;
