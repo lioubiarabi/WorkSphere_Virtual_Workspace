@@ -120,27 +120,7 @@
 
                     <div class="assign-list" id="assignList">
 
-                        <div class="assign-card">
-                            <div class="assign-info">
-                                <img src="https://ui-avatars.com/api/?name=Sarah+Connor&background=random">
-                                <div class="text-group">
-                                    <div class="name">halima</div>
-                                    <div class="role">Security</div>
-                                </div>
-                            </div>
-                            <button class="btn-assign-action">Assign</button>
-                        </div>
-
-                        <div class="assign-card">
-                            <div class="assign-info">
-                                <img src="https://ui-avatars.com/api/?name=Sarah+Connor&background=random">
-                                <div class="text-group">
-                                    <div class="name">halima</div>
-                                    <div class="role">Security</div>
-                                </div>
-                            </div>
-                            <button class="btn-assign-action">Assign</button>
-                        </div>
+                        <!-- assigning list -->
 
                     </div>
                 </div>
@@ -403,6 +383,11 @@
 
         closeModal.addEventListener("click", closeEmployeeModal);
         cancelModal.addEventListener("click", closeEmployeeModal);
+
+        // close assign modal
+        document.getElementById("closeAssignModal").addEventListener("click", ()=>{
+            document.getElementById("assignModal").classList.toggle("hidden");
+        })
 
         // add experience script
         document.getElementById("addExpBtn").addEventListener("click", () => {
