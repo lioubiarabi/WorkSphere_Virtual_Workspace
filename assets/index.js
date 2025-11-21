@@ -387,7 +387,10 @@ function assignToRoom(id, room) {
 
 // unassign function
 function unassign(id) {
-    
+    let employeeIndex = employeesArray.findIndex(emp => emp.id == id);
+    let employeeobject = employeesArray[employeeIndex];
+    employeeobject.assigned = false;
+
 }
 
 // delete an employee
