@@ -340,7 +340,7 @@ function assign(zone) {
     switch (zone) {
         case "reception":
             // get the employee for this room
-            employees = employeesArray.filter(emp => emp.role == "manager" || emp.role == "receptionist" || emp.role == "cleaner");
+            employees = employeesArray.filter(emp => !emp.assigned).filter(emp => emp.role == "manager" || emp.role == "receptionist" || emp.role == "cleaner");
             employees.forEach(emp => {
                 assignList.innerHTML += `<div class="assign-card">
                                             <div class="assign-info">
@@ -392,6 +392,7 @@ function assignToRoom(id, room) {
 
     // close assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
+    putItems();
 }
 
 // delete an employee
