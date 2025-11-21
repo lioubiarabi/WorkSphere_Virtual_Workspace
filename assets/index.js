@@ -206,11 +206,11 @@ function putItems() {
                     </div>
                     <div class="employee-actions">
 
-                        <button class="btn-icon btn-edit" onclick="edit(${index})">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        <button class="btn-icon btn-info" onclick="showInfo(${index})">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
                             </svg>
                         </button>
 
@@ -264,58 +264,56 @@ formModal.addEventListener("input", (e) => {
     validate(input, regex[input.getAttribute("name")]);
 })
 
-// when click add new employee
-document.getElementById("addWorkerBtn").addEventListener("click", () => {
-    openEmployeeModal();
-    formModal.addEventListener("submit", (e) => {
-        e.preventDefault();
+// add new employee
+formModal.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-        let inputs = formModal.querySelectorAll(".photo-section input, .form-grid input, .form-grid select");
-        let newEmployee = { id: id, experiences: [] }, isValid = true;
+    let inputs = formModal.querySelectorAll(".photo-section input, .form-grid input, .form-grid select");
+    let newEmployee = { id: id, experiences: [] }, isValid = true;
 
-        inputs.forEach(input => {
-            let name = input.getAttribute("name");
-            validate(input, regex[name]) ? (newEmployee[name] = input.value) : (isValid = false);
-        });
+    inputs.forEach(input => {
+        let name = input.getAttribute("name");
+        validate(input, regex[name]) ? (newEmployee[name] = input.value) : (isValid = false);
+    });
 
-        //validating the experiences
-        formModal.querySelectorAll(".experience-item").forEach(exp => {
-            let newExp = {};
-            let inputs = exp.querySelectorAll("input");
+    //validating the experiences
+    formModal.querySelectorAll(".experience-item").forEach(exp => {
+        let newExp = {};
+        let inputs = exp.querySelectorAll("input");
 
-            validate(inputs[0], regex["exp_position"]) ? (newExp["exp_position"] = inputs[0].value) : (isValid = false);
-            validate(inputs[1], regex["exp_company"]) ? (newExp["exp_company"] = inputs[1].value) : (isValid = false);
+        validate(inputs[0], regex["exp_position"]) ? (newExp["exp_position"] = inputs[0].value) : (isValid = false);
+        validate(inputs[1], regex["exp_company"]) ? (newExp["exp_company"] = inputs[1].value) : (isValid = false);
 
-            // validating dates
-            let today = new Date();
-            let exp_start_date = new Date(inputs[2].value);
-            let exp_end_date = new Date(inputs[3].value);
+        // validating dates
+        let today = new Date();
+        let exp_start_date = new Date(inputs[2].value);
+        let exp_end_date = new Date(inputs[3].value);
 
-            if (exp_start_date < today && exp_end_date > exp_start_date) {
-                newExp["exp_start"] = inputs[2].value;
-                newExp["exp_end"] = inputs[3].value;
-            } else {
-                validate(inputs[2], false);
-                validate(inputs[3], false);
-                isValid = false;
-            }
-
-            newEmployee["experiences"].push(newExp);
-        });
-
-        if (isValid) {
-            // update the unassigned list
-            employeesArray.push(newEmployee);
-            putItems();
-            id++;
-
-            closeEmployeeModal();
+        if (exp_start_date < today && exp_end_date > exp_start_date) {
+            newExp["exp_start"] = inputs[2].value;
+            newExp["exp_end"] = inputs[3].value;
         } else {
-            // show the warning message
-            document.getElementById("warningMessage").style.display = "block";
+            validate(inputs[2], false);
+            validate(inputs[3], false);
+            isValid = false;
         }
-    })
-});
+
+        newEmployee["experiences"].push(newExp);
+    });
+
+    if (isValid) {
+        // update the unassigned list
+        employeesArray.push(newEmployee);
+        putItems();
+        id++;
+
+        closeEmployeeModal();
+    } else {
+        // show the warning message
+        document.getElementById("warningMessage").style.display = "block";
+    }
+})
+
 
 // function for validate the inputs
 function validate(input, regex) {
@@ -399,116 +397,21 @@ function unassign(id) {
 
 }
 
+//show employee info in a model
+function showInfo(id) {
+
+}
+
 // delete an employee
 function deleteEmployee(id) {
-    if(confirm("are you sure?")) {
+    if (confirm("are you sure?")) {
         employeesArray = employeesArray.filter(e => e.id !== id);
 
         // 
         let profile = document.getElementById(`assigned-${id}`);
-        if(profile) profile.remove();
-        
+        if (profile) profile.remove();
+
         //update
         putItems();
     }
-}
-
-// edit an employee
-function edit(index) {
-    let employee = employeesArray[index];
-
-    openEmployeeModal();
-    document.querySelector(".modal-header h2").innerText = "Edit: " + employeesArray[index].name;
-
-    // fill the modal inputs
-    let inputs = formModal.querySelectorAll(".photo-section input, .form-grid input, .form-grid select");
-    document.getElementById("previewImg").src = employee.profileUrl;
-    inputs.forEach(input => {
-        input.value = employee[input.getAttribute("name")];
-    })
-    document.getElementById("experienceList").innerHTML = "";
-    for (let i = 0; i < employee.experiences.length; i++) {
-        document.getElementById("experienceList").innerHTML += `
-                <div class="experience-item">
-                                <button type="button" class="btn-remove-exp" style="display:${i ? "block" : "none"}">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2">
-                                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                                    </svg>
-                                </button>
-                                
-                                <div class="exp-grid">
-                                    <div class="form-group">
-                                        <label>Position</label>
-                                        <input type="text" name="exp_position" placeholder="Position" value="${employee.experiences[i].exp_position}" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Company</label>
-                                        <input type="text" name="exp_company" placeholder="Company" value="${employee.experiences[i].exp_company}" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Start Date</label>
-                                        <input type="date"  name="exp_start" value="${employee.experiences[i].exp_start}"  required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>End Date</label>
-                                        <input type="date" name="exp_end" value="${employee.experiences[i].exp_end}" required>
-                                    </div>
-                                </div>
-                            </div>
-            `;
-
-    }
-
-    formModal.addEventListener('sumbit', (e) => {
-        e.preventDefault();
-
-        let updateEmployee = { experiences: [] }, isValid = true;
-
-        inputs.forEach(input => {
-            let name = input.getAttribute("name");
-            validate(input, regex[name]) ? (updateEmployee[name] = input.value) : (isValid = false);
-        });
-
-        //validating the experiences
-        formModal.querySelectorAll(".experience-item").forEach(exp => {
-            let newExp = {};
-            let inputs = exp.querySelectorAll("input");
-
-            validate(inputs[0], regex["exp_position"]) ? (newExp["exp_position"] = inputs[0].value) : (isValid = false);
-            validate(inputs[1], regex["exp_company"]) ? (newExp["exp_company"] = inputs[1].value) : (isValid = false);
-
-            // validating dates
-            let today = new Date();
-            let exp_start_date = new Date(inputs[2].value);
-            let exp_end_date = new Date(inputs[3].value);
-
-            if (exp_start_date < today && exp_end_date > exp_start_date) {
-                newExp["exp_start"] = inputs[2].value;
-                newExp["exp_end"] = inputs[3].value;
-            } else {
-                validate(inputs[2], false);
-                validate(inputs[3], false);
-                isValid = false;
-            }
-
-            updateEmployee["experiences"].push(newExp);
-        });
-
-        if (isValid) {
-            // update the unassigned list
-            employeesArray[index] = updateEmployee;
-            putItems();
-
-            closeEmployeeModal();
-        } else {
-            // show the warning message
-            document.getElementById("warningMessage").style.display = "block";
-        }
-
-    })
 }

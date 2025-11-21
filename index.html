@@ -69,7 +69,7 @@
             <div class="room-zone security-room">
                 <div class="room-header">Security</div>
                 <div class="profiles-group">
-                    
+
                 </div>
                 <button class="btn-add" onclick="assign('security')">+</button>
             </div>
@@ -77,7 +77,7 @@
             <div class="room-zone staff-room">
                 <div class="room-header">Staff</div>
                 <div class="profiles-group">
-                    
+
                 </div>
                 <button class="btn-add" onclick="assign('staff')">+</button>
             </div>
@@ -343,6 +343,7 @@
     <script>
         let employeeModal = document.getElementById("employeeModal");
         let expList = document.getElementById("experienceList");
+        let addWorkerBtn = document.getElementById("addWorkerBtn");
         let closeModal = document.getElementById("closeModal");
         let cancelModal = document.getElementById("cancelModal");
 
@@ -380,11 +381,12 @@
                             </div>`;
         }
 
+        addWorkerBtn.addEventListener("click", openEmployeeModal);
         closeModal.addEventListener("click", closeEmployeeModal);
         cancelModal.addEventListener("click", closeEmployeeModal);
 
         // close assign modal
-        document.getElementById("closeAssignModal").addEventListener("click", ()=>{
+        document.getElementById("closeAssignModal").addEventListener("click", () => {
             document.getElementById("assignModal").classList.toggle("hidden");
         })
 

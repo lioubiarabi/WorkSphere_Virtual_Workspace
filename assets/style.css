@@ -224,7 +224,7 @@ body {
     transform: translateY(-3px);
 }
 
-.btn-edit:hover {
+.btn-info:hover {
     color: var(--secondary-color);
     background-color: rgba(52, 152, 219, 0.15);
 }
