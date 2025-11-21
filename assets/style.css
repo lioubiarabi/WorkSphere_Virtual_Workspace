@@ -493,7 +493,8 @@ body {
 }
 
 .btn-cancel,
-.btn-save {
+.btn-save,
+.btn-unassign {
     padding: 10px 24px;
     border-radius: 8px;
     font-weight: 600;
@@ -509,6 +510,14 @@ body {
 
 .btn-cancel:hover {
     background: #ffcccc;
+}
+
+.btn-unassign {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+.btn-unassign:hover {
+    background-color: #fde68a;
 }
 
 .btn-save {
@@ -629,6 +638,9 @@ body {
 .btn-assign-action:hover {
     background-color: var(--primary-dark);
 }
+
+
+
 
 .workspace {
     background: var(--white);
@@ -773,7 +785,6 @@ body {
     font-weight: 500;
     word-break: break-all;
 }
-
 
 
 /* Tablet Portrait */
