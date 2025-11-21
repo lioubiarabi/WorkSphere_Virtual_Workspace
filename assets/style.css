@@ -715,8 +715,9 @@ body {
     height: 50px;
     border-radius: 50%;
     border: 2px solid var(--white);
-    margin-left: -20px;
+    margin-left: -18px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .mini-avatar:hover {
@@ -803,8 +804,8 @@ body {
     }
 
     .mini-avatar {
-        width: 28px;
-        height: 28px;
+        width: 40px;
+        height: 40px;
     }
 }
 

@@ -385,10 +385,14 @@ function assign(zone) {
 // assign to room function
 function assignToRoom(id, room) {
     let employeeIndex = employeesArray.findIndex(emp => emp.id == id);
+    let employeeobject = employeesArray[employeeIndex];
     
     // change the employee state to assigned
-    employeesArray[employeeIndex].assigned = true;
-    employeesArray[employeeIndex].room = room;
+    employeeobject.assigned = true;
+    employeeobject.room = room;
+
+    //render the profile in the zone
+    document.querySelector(`.${room}-room .profiles-group`).innerHTML += `<img src="${employeeobject.profileUrl}" class="mini-avatar">`;
 
     // close assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
