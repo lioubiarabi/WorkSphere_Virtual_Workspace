@@ -191,6 +191,8 @@ function putItems() {
     if (!unassignedEmployees.length) {
         document.getElementById("noEmployee").style.display = "block";
         return;
+    } else {
+        document.getElementById("noEmployee").style.display = "none";
     }
 
     // render the employees
@@ -327,6 +329,14 @@ function validate(input, regex) {
 }
 
 // assign function
+let capacity = {
+    reception: 6, 
+    conference: 10,
+    archive: 2,
+    security: 3,
+    servers: 2,
+    staff: 8
+};
 function assign(zone) {
     // open the assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
@@ -376,7 +386,7 @@ function assignToRoom(id, room) {
     employeeobject.room = room;
 
     //render the profile in the zone
-    document.querySelector(`.${room}-room .profiles-group`).innerHTML += `<img src="${employeeobject.profileUrl}" class="mini-avatar" id="assigned-${employeeobject.id}">`;
+    document.querySelector(`.${room}-room .profiles-group`).innerHTML += `<img src="${employeeobject.profileUrl}" class="mini-avatar" id="assigned-${employeeobject.id}" onclick="showInfo(${employeeobject.id})">`;
 
     // close assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
