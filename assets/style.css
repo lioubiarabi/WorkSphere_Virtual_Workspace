@@ -200,11 +200,6 @@ body {
     color: white;
 }
 
-.badge-staff {
-    background-color: #95a5a6;
-    color: white;
-}
-
 .employee-actions {
     display: flex;
     align-items: center;
@@ -636,15 +631,13 @@ body {
 }
 
 .workspace {
-    background: url("./images/workspace.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    background: var(--white);
     overflow: hidden;
     border-radius: 16px;
     box-shadow: 0 4px 20px var(--shadow);
     position: sticky;
     top: 32px;
+    padding: 24px;
     height: 85vh;
 
     /* rooms grid */
@@ -656,8 +649,8 @@ body {
 
 .btn-add {
     position: absolute;
-    bottom: 30px;
-    right: 15px;
+    top: 30px;
+    left: 15px;
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -686,23 +679,23 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    background: var(--light-bg);
 }
 
 .room-header {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 12px;
     font-weight: 700;
     color: var(--dark-bg);
     background: rgba(255, 255, 255, 0.8);
     padding: 4px 8px;
     border-radius: 6px;
-    align-self: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    display: none;
 }
 
-.room-zone:hover .room-header {
-    display: block;
-}
 
 .avatar-group {
     display: flex;

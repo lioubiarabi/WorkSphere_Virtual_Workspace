@@ -74,7 +74,7 @@ let employeesArray = [
         "experiences": [],
         "profileUrl": "https://ui-avatars.com/api/?name=Layla+Idrissi&background=9b59b6&color=fff",
         "name": "Layla Idrissi",
-        "role": "staff",
+        "role": "cleaner",
         "email": "layla.idrissi@worksphere.com",
         "phone": "+212662223344"
     },
@@ -138,7 +138,7 @@ let employeesArray = [
         ],
         "profileUrl": "https://ui-avatars.com/api/?name=Amina+Chraibi&background=9b59b6&color=fff",
         "name": "Amina Chraibi",
-        "role": "staff",
+        "role": "it_technician",
         "email": "amina.chraibi@worksphere.com",
         "phone": "+212662889900"
     },
@@ -383,6 +383,11 @@ function assignToRoom(id, room) {
     // close assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
     putItems();
+}
+
+// unassign function
+function unassign(id) {
+    
 }
 
 // delete an employee
