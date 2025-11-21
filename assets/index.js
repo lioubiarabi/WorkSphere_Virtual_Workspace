@@ -171,8 +171,11 @@ function validate(input, regex) {
 
 // assign function
 function assign(zone) {
+    // open the assign modal
+    document.getElementById("assignModal").classList.toggle("hidden");
     switch (zone) {
         case "reception":
+            
 
             break;
 
