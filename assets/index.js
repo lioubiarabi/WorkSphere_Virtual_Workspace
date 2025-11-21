@@ -169,6 +169,11 @@ function validate(input, regex) {
     }
 }
 
+// assign function
+function assign(zone) {
+
+}
+
 // delete an employee
 function deleteEmployee(index) {
     
