@@ -268,7 +268,7 @@ document.getElementById("addWorkerBtn").addEventListener("click", () => {
         e.preventDefault();
 
         let inputs = formModal.querySelectorAll(".photo-section input, .form-grid input, .form-grid select");
-        let newEmployee = {id: id, experiences: [] }, isValid = true;
+        let newEmployee = { id: id, experiences: [] }, isValid = true;
 
         inputs.forEach(input => {
             let name = input.getAttribute("name");
@@ -329,11 +329,25 @@ function validate(input, regex) {
 function assign(zone) {
     // open the assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
+    let assignList = document.getElementById("assignList");
     let employees;
     switch (zone) {
         case "reception":
             // get the employee for this room
-            employees = employeesArray.filter(emp=> emp.role == "manager" || emp.role == "receptionist" || emp.role == "cleaner");
+            employees = employeesArray.filter(emp => emp.role == "manager" || emp.role == "receptionist" || emp.role == "cleaner");
+            employees.forEach(emp => {
+                assignList.innerHTML += `<div class="assign-card">
+                                            <div class="assign-info">
+                                                <img src="${emp.profileUrl}">
+                                                <div class="text-group">
+                                                    <div class="name">${emp.name}</div>
+                                                    <div class="role">${emp.role}</div>
+                                                </div>
+                                            </div>
+                                            <button class="btn-assign-action">Assign</button>
+                                        </div>`;
+
+            })
 
             break;
 
