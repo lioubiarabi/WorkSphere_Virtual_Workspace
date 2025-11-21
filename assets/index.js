@@ -171,12 +171,39 @@ function validate(input, regex) {
 
 // assign function
 function assign(zone) {
+    switch (zone) {
+        case "reception":
 
+            break;
+
+        case "confrenece":
+
+            break;
+
+        case "archive":
+
+            break;
+
+        case "security":
+
+            break;
+
+        case "staff":
+
+            break;
+
+        case "servers":
+
+            break;
+
+        default:
+            break;
+    }
 }
 
 // delete an employee
 function deleteEmployee(index) {
-    
+
 }
 
 // edit an employee
@@ -232,7 +259,7 @@ function edit(index) {
 
     formModal.addEventListener('sumbit', (e) => {
         e.preventDefault();
-        
+
         let updateEmployee = { experiences: [] }, isValid = true;
 
         inputs.forEach(input => {
