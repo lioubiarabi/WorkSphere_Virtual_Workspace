@@ -343,15 +343,15 @@ function assign(zone) {
     document.getElementById("assignModal").classList.toggle("hidden");
     document.getElementById("targetZoneName").innerText = zone + " room";
 
-    // check if the room reached its capacity
-    if(!capacity[zone]) {
-        document.getElementById("assignWarningMessage").style.display = "block";
-        return;
-    }
-
     // empty the assign list
     let assignList = document.getElementById("assignList");
     assignList.innerHTML = "";
+    
+    // check if the room reached its capacity
+    if (!capacity[zone]) {
+        document.getElementById("assignWarningMessage").style.display = "block";
+        return;
+    }
 
     // get the employee for the room
     let permissions = {
@@ -394,6 +394,9 @@ function assignToRoom(id, room) {
 
     //render the profile in the zone
     document.querySelector(`.${room}-room .profiles-group`).innerHTML += `<img src="${employeeobject.profileUrl}" class="mini-avatar" id="assigned-${employeeobject.id}" onclick="showInfo(${employeeobject.id})">`;
+
+    // change the capacity
+    capacity[room]--;
 
     // close assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
