@@ -680,20 +680,21 @@ body {
     flex-direction: column;
     justify-content: space-around;
     background: var(--light-bg);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
 }
 
 .room-header {
     position: absolute;
-    top: 45px;
+    top: 10px;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 12px;
     font-weight: 700;
     color: var(--dark-bg);
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--white);
     padding: 4px 8px;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 0 0 10px 10px;
 }
 
 
@@ -828,7 +829,21 @@ body {
     .workspace {
         height: 30vh;
         min-height: 270px;
+        padding: 10px;
+    }
 
+    .room-header {
+        font-size: 9px;
+        padding: 2px 6px;
+        top: 5px;
+    }
+
+    .btn-add {
+        top: 10px;
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+        right: 5px;
     }
 
     /* modal */
@@ -847,17 +862,6 @@ body {
     .exp-grid {
         grid-template-columns: 1fr;
         gap: 10px;
-    }
-
-    .room-header {
-        font-size: 10px;
-        padding: 2px 6px;
-    }
-
-    .btn-add {
-        width: 28px;
-        height: 28px;
-        font-size: 16px;
     }
 
     .mini-avatar {
