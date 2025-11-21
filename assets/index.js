@@ -414,6 +414,9 @@ function showInfo(id) {
     document.getElementById("cvPhone").innerText = employee.phone;
     document.getElementById("cvZone").innerHTML = employee.assigned ? employee.room : "unassigned";
     document.getElementById("cvExperiences").innerHTML = employee.experiences.length;
+
+    // hide/show unassign button
+    document.getElementById("btnUnassignProfile").style.display = employee.assigned ? "block" : "none";
 }
 
 // info model actions
