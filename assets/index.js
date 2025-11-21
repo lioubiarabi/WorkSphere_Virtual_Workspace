@@ -347,7 +347,7 @@ function assign(zone) {
                                                     <div class="role">${emp.role}</div>
                                                 </div>
                                             </div>
-                                            <button class="btn-assign-action">Assign</button>
+                                            <button class="btn-assign-action" onclick="assignToRoom(${emp.id})">Assign</button>
                                         </div>`;
 
             })
@@ -381,7 +381,8 @@ function assign(zone) {
 
 // assign to room function
 function assignToRoom(id) {
-    
+    let employeeIndex = employeesArray.findIndex(emp => emp.id == id);
+    console.log(employeeIndex)
 }
 
 // delete an employee
