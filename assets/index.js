@@ -337,7 +337,6 @@ let capacity = {
     servers: 2,
     staff: 8
 };
-const roomMax = { ...capacity };
 function assign(zone) {
     // open the assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
@@ -346,7 +345,7 @@ function assign(zone) {
     // empty the assign list
     let assignList = document.getElementById("assignList");
     assignList.innerHTML = "";
-    
+
     // check if the room reached its capacity
     if (!capacity[zone]) {
         document.getElementById("assignWarningMessage").style.display = "block";
@@ -395,8 +394,9 @@ function assignToRoom(id, room) {
     //render the profile in the zone
     document.querySelector(`.${room}-room .profiles-group`).innerHTML += `<img src="${employeeobject.profileUrl}" class="mini-avatar" id="assigned-${employeeobject.id}" onclick="showInfo(${employeeobject.id})">`;
 
-    // change the capacity
+    // change the capacity and change zone color
     capacity[room]--;
+    document.querySelector(`.${room}-room`).style.background = capacity[room] ? "#ecf0f1" : "#ffcccc";
 
     // close assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
@@ -411,6 +411,10 @@ function unassign(id) {
 
     //remove the profile avatar from the zone
     document.getElementById(`assigned-${id}`).remove();
+
+    // change the capacity and change zone color
+    capacity[employeeobject.room]++;
+    document.querySelector(`.${employeeobject.room}-room`).style.background = capacity[employeeobject.room] ? "#ecf0f1" : "#ffcccc";
 
     // update
     putItems();
