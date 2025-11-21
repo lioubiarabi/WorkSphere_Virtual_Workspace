@@ -379,6 +379,11 @@ function assign(zone) {
     }
 }
 
+// assign to room function
+function assignToRoom(id) {
+    
+}
+
 // delete an employee
 function deleteEmployee(index) {
 
