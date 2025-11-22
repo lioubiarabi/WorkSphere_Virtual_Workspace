@@ -184,14 +184,19 @@ let capacity = {
     servers: 2,
     staff: 8,
 };
-let required = ["reception", "archive", "security", "archive"];
+let required = ["reception", "archive", "security", "servers"];
 
 // render the employees function
 function putItems() {
     //render the assigned employees in each zone
     for (room in capacity) {
-        let assignedEmployees = employeesArray.filter(emp=> emp.assigned && emp.room == room);
-        
+        let assignedEmployees = employeesArray.filter(emp => emp.assigned && emp.room == room);
+        console.log(assignedEmployees)
+        if (assignedEmployees.length) {
+
+        } else {
+            document.querySelector(`.${room}-room`).style.background = required.includes(room) ? "#ffcccc" : "#ecf0f1";
+        }
     }
 
     let unassignedList = document.getElementById("unassignedList");
@@ -403,7 +408,6 @@ function assignToRoom(id, room) {
 
     // change the capacity
     capacity[room]--;
-    document.querySelector(`.${room}-room`).style.background = capacity[room] ? "#ecf0f1" : "#ffcccc";
 
     // close assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
