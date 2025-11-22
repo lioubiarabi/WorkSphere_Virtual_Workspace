@@ -15,7 +15,7 @@ let employeesArray = [
                 "exp_end": "2005-01-11"
             }
         ],
-        "profileUrl": "https://img.freepik.com/premium-vector/cute-woman-avatar-profile-vector-illustration_1058532-14592.jpg",
+        "profileUrl": "https://ui-avatars.com/api/?name=halima+elhafidy&background=5258db&color=fff",
         "name": "halima el hafidy",
         "role": "manager",
         "email": "elhafidy.halima06@gmail.com",
@@ -176,9 +176,24 @@ let employeesArray = [
     }
 ];
 let id = 12;
+let capacity = {
+    reception: 6,
+    conference: 10,
+    archive: 2,
+    security: 3,
+    servers: 2,
+    staff: 8,
+};
+let required = ["reception", "archive", "security", "archive"];
 
 // render the employees function
 function putItems() {
+    //render the assigned employees in each zone
+    for (room in capacity) {
+        let assignedEmployees = employeesArray.filter(emp=> emp.assigned && emp.room == room);
+        
+    }
+
     let unassignedList = document.getElementById("unassignedList");
 
     // filter the unassinged employees
@@ -329,14 +344,6 @@ function validate(input, regex) {
 }
 
 // assign function
-let capacity = {
-    reception: 6,
-    conference: 10,
-    archive: 2,
-    security: 3,
-    servers: 2,
-    staff: 8
-};
 function assign(zone) {
     // open the assign modal
     document.getElementById("assignModal").classList.toggle("hidden");
@@ -394,7 +401,7 @@ function assignToRoom(id, room) {
     //render the profile in the zone
     document.querySelector(`.${room}-room .profiles-group`).innerHTML += `<img src="${employeeobject.profileUrl}" class="mini-avatar" id="assigned-${employeeobject.id}" onclick="showInfo(${employeeobject.id})">`;
 
-    // change the capacity and change zone color
+    // change the capacity
     capacity[room]--;
     document.querySelector(`.${room}-room`).style.background = capacity[room] ? "#ecf0f1" : "#ffcccc";
 
@@ -409,12 +416,9 @@ function unassign(id) {
     let employeeobject = employeesArray[employeeIndex];
     employeeobject.assigned = false;
 
-    //remove the profile avatar from the zone
-    document.getElementById(`assigned-${id}`).remove();
 
-    // change the capacity and change zone color
+    // change the capacity
     capacity[employeeobject.room]++;
-    document.querySelector(`.${employeeobject.room}-room`).style.background = capacity[employeeobject.room] ? "#ecf0f1" : "#ffcccc";
 
     // update
     putItems();
