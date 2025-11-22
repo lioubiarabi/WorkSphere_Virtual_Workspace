@@ -184,6 +184,7 @@ let capacity = {
     servers: 2,
     staff: 8,
 };
+var editMode = { active: false, index: null };
 let required = ["reception", "archive", "security", "servers"];
 
 // render the employees function
@@ -243,7 +244,7 @@ function putItems() {
                             </svg>
                         </button>
 
-                        <button class="btn-icon btn-edit" onclick="edit(${index})">
+                        <button class="btn-icon btn-edit" onclick="edit(${item.id})">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -269,7 +270,7 @@ function putItems() {
 putItems();
 
 let regex = {
-    profileUrl: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
+    profileUrl: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-?=&%+]*)*\/?$/,
     name: /^[a-zA-Z\s]{3,}$/,
     email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
     phone: /^\+212\s?[5-7]\d{8}$/,
@@ -301,12 +302,12 @@ formModal.addEventListener("input", (e) => {
     validate(input, regex[input.getAttribute("name")]);
 })
 
-// add new employee
+// add new employee or update an emplyee depend on editModex variable
 formModal.addEventListener("submit", (e) => {
     e.preventDefault();
 
     let inputs = formModal.querySelectorAll(".photo-section input, .form-grid input, .form-grid select");
-    let newEmployee = { id: id, experiences: [] }, isValid = true;
+    let newEmployee = { experiences: [] }, isValid = true;
 
     inputs.forEach(input => {
         let name = input.getAttribute("name");
@@ -339,10 +340,18 @@ formModal.addEventListener("submit", (e) => {
     });
 
     if (isValid) {
+        if (editMode.active) {
+            // update the employee in the array and update
+            employeesArray[editMode.index] = newEmployee;
+        } else {
+            //give the object an id and add it to the employees array
+            newEmployee.id = id;
+            employeesArray.push(newEmployee);
+            id++;
+        }
+
         // update the unassigned list
-        employeesArray.push(newEmployee);
         putItems();
-        id++;
 
         closeEmployeeModal();
     } else {
@@ -495,11 +504,16 @@ function deleteEmployee(id, room) {
 }
 
 // edit an employee for filling the forms of the employee modal
-function edit(index) {
+function edit(id) {
+    // find the employee
+    let index = employeesArray.findIndex(emp => emp.id == id);
     let employee = employeesArray[index];
 
     openEmployeeModal();
-    document.querySelector(".modal-header h2").innerText = "Edit: " + employeesArray[index].name;
+    editMode.active = true;
+    editMode.index = index;
+
+    document.querySelector("#employeeModal .modal-header h2").innerText = "Edit: " + employeesArray[index].name;
 
     // fill the modal inputs
     let inputs = formModal.querySelectorAll(".photo-section input, .form-grid input, .form-grid select");
