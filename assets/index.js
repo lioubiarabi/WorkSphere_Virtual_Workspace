@@ -243,6 +243,14 @@ function putItems() {
                             </svg>
                         </button>
 
+                        <button class="btn-icon btn-edit" onclick="edit(${index})">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                        </button>
+
                         <button class="btn-icon btn-delete" onclick="deleteEmployee(${item.id})">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -483,5 +491,57 @@ function deleteEmployee(id, room) {
 
         //update
         putItems();
+    }
+}
+
+// edit an employee for filling the forms of the employee modal
+function edit(index) {
+    let employee = employeesArray[index];
+
+    openEmployeeModal();
+    document.querySelector(".modal-header h2").innerText = "Edit: " + employeesArray[index].name;
+
+    // fill the modal inputs
+    let inputs = formModal.querySelectorAll(".photo-section input, .form-grid input, .form-grid select");
+    document.getElementById("previewImg").src = employee.profileUrl;
+    inputs.forEach(input => {
+        input.value = employee[input.getAttribute("name")];
+    })
+    document.getElementById("experienceList").innerHTML = "";
+    for (let i = 0; i < employee.experiences.length; i++) {
+        document.getElementById("experienceList").innerHTML += `
+                <div class="experience-item">
+                                <button type="button" class="btn-remove-exp" style="display:${i ? "block" : "none"}">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                                
+                                <div class="exp-grid">
+                                    <div class="form-group">
+                                        <label>Position</label>
+                                        <input type="text" name="exp_position" placeholder="Position" value="${employee.experiences[i].exp_position}" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Company</label>
+                                        <input type="text" name="exp_company" placeholder="Company" value="${employee.experiences[i].exp_company}" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Start Date</label>
+                                        <input type="date"  name="exp_start" value="${employee.experiences[i].exp_start}"  required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>End Date</label>
+                                        <input type="date" name="exp_end" value="${employee.experiences[i].exp_end}" required>
+                                    </div>
+                                </div>
+                            </div>
+            `;
+
     }
 }

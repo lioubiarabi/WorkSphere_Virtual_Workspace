@@ -225,6 +225,11 @@ body {
 }
 
 .btn-info:hover {
+    color: var(--primary-color);
+    background-color: rgba(46, 204, 113, 0.15);
+}
+
+.btn-edit:hover {
     color: var(--secondary-color);
     background-color: rgba(52, 152, 219, 0.15);
 }
@@ -516,6 +521,7 @@ body {
     background-color: #fef3c7;
     color: #d97706;
 }
+
 .btn-unassign:hover {
     background-color: #fde68a;
 }
