@@ -1,5 +1,13 @@
-let employeesArray = [];
-let id = 12;
+// get data from localStorage
+let employeesData = JSON.parse(localStorage.getItem("data"));
+if(!employeesData) {
+   (async()=> {
+    let res = await fetch("./assets/employees.json");
+    employeesData = await res.json();
+    localStorage.setItem("data", JSON.stringify(employeesData));
+    })()
+}
+
 let capacity = {
     reception: 6,
     conference: 10,
@@ -15,7 +23,7 @@ let required = ["reception", "archive", "security", "servers"];
 function putItems() {
     //render the assigned employees in each zone
     for (room in capacity) {
-        let assignedEmployees = employeesArray.filter(emp => emp.assigned && emp.room == room);
+        let assignedEmployees = employeesData.employeesArray.filter(emp => emp.assigned && emp.room == room);
 
         // clear the room and set all zones to gray by default
         document.querySelector(`.${room}-room .profiles-group`).innerHTML = "";
@@ -34,7 +42,7 @@ function putItems() {
     let unassignedList = document.getElementById("unassignedList");
 
     // filter the unassinged employees
-    let unassignedEmployees = employeesArray.filter(emp => !emp.assigned)
+    let unassignedEmployees = employeesData.employeesArray.filter(emp => !emp.assigned)
 
     // clear the list
     unassignedList.innerHTML = "";
@@ -166,12 +174,12 @@ formModal.addEventListener("submit", (e) => {
     if (isValid) {
         if (editMode.active) {
             // update the employee in the array and update
-            employeesArray[editMode.index] = newEmployee;
+            employeesData.employeesArray[editMode.index] = newEmployee;
         } else {
             //give the object an id and add it to the employees array
-            newEmployee.id = id;
-            employeesArray.push(newEmployee);
-            id++;
+            newEmployee.id = employeesData.idCounter;
+            employeesData.employeesArray.push(newEmployee);
+            employeesData.idCounter++;
         }
 
         // update the unassigned list
@@ -222,7 +230,7 @@ function assign(zone) {
         staff: ["manager", "receptionist", "it_technician", "security", "cleaner"]
     };
 
-    let employees = employeesArray.filter(emp => !emp.assigned).filter(emp => permissions[zone].includes(emp.role));
+    let employees = employeesData.employeesArray.filter(emp => !emp.assigned).filter(emp => permissions[zone].includes(emp.role));
 
     // show no employees message when the array is empty
     document.getElementById("assignWarningMessage").style.display = employees.length ? "none" : "block";
@@ -244,8 +252,8 @@ function assign(zone) {
 
 // assign to room function
 function assignToRoom(id, room) {
-    let employeeIndex = employeesArray.findIndex(emp => emp.id == id);
-    let employeeobject = employeesArray[employeeIndex];
+    let employeeIndex = employeesData.employeesArray.findIndex(emp => emp.id == id);
+    let employeeobject = employeesData.employeesArray[employeeIndex];
 
     // change the employee state to assigned
     employeeobject.assigned = true;
@@ -261,8 +269,8 @@ function assignToRoom(id, room) {
 
 // unassign function
 function unassign(id) {
-    let employeeIndex = employeesArray.findIndex(emp => emp.id == id);
-    let employeeobject = employeesArray[employeeIndex];
+    let employeeIndex = employeesData.employeesArray.findIndex(emp => emp.id == id);
+    let employeeobject = employeesData.employeesArray[employeeIndex];
     employeeobject.assigned = false;
 
     // change the capacity
@@ -280,7 +288,7 @@ function showInfo(id) {
     document.getElementById("CVModal").classList.toggle("hidden");
 
     // find the employee
-    let employee = employeesArray.find(emp => emp.id == id);
+    let employee = employeesData.employeesArray.find(emp => emp.id == id);
 
     targetId = id;
     targetRoom = employee.room;
@@ -310,7 +318,7 @@ document.getElementById("btnUnassignProfile").addEventListener("click", () => {
 // delete an employee
 function deleteEmployee(id, room) {
     if (confirm("are you sure?")) {
-        employeesArray = employeesArray.filter(e => e.id !== id);
+        employeesData.employeesArray = employeesData.employeesArray.filter(e => e.id !== id);
 
         // if the profile exist in the zone remove it
         let profile = document.getElementById(`assigned-${id}`);
@@ -330,14 +338,14 @@ function deleteEmployee(id, room) {
 // edit an employee for filling the forms of the employee modal
 function edit(id) {
     // find the employee
-    let index = employeesArray.findIndex(emp => emp.id == id);
-    let employee = employeesArray[index];
+    let index = employeesData.employeesArray.findIndex(emp => emp.id == id);
+    let employee = employeesData.employeesArray[index];
 
     openEmployeeModal();
     editMode.active = true;
     editMode.index = index;
 
-    document.querySelector("#employeeModal .modal-header h2").innerText = "Edit: " + employeesArray[index].name;
+    document.querySelector("#employeeModal .modal-header h2").innerText = "Edit: " + employeesData.employeesArray[index].name;
 
     // fill the modal inputs
     let inputs = formModal.querySelectorAll(".photo-section input, .form-grid input, .form-grid select");
