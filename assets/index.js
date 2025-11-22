@@ -191,11 +191,18 @@ function putItems() {
     //render the assigned employees in each zone
     for (room in capacity) {
         let assignedEmployees = employeesArray.filter(emp => emp.assigned && emp.room == room);
-        console.log(assignedEmployees)
-        if (assignedEmployees.length) {
 
+        // clear the room and set all zones to gray by default
+        document.querySelector(`.${room}-room .profiles-group`).innerHTML = "";
+        document.querySelector(`.${room}-room`).style.background = "#ecf0f1";
+
+        if (assignedEmployees.length) {
+            //render the profile in the zone
+            assignedEmployees.forEach(emp => {
+                document.querySelector(`.${room}-room .profiles-group`).innerHTML += `<img src="${emp.profileUrl}" class="mini-avatar" onclick="showInfo(${emp.id})">`;
+            });
         } else {
-            document.querySelector(`.${room}-room`).style.background = required.includes(room) ? "#ffcccc" : "#ecf0f1";
+            required.includes(room) && (document.querySelector(`.${room}-room`).style.background = "#ffcccc");
         }
     }
 
@@ -403,9 +410,6 @@ function assignToRoom(id, room) {
     employeeobject.assigned = true;
     employeeobject.room = room;
 
-    //render the profile in the zone
-    document.querySelector(`.${room}-room .profiles-group`).innerHTML += `<img src="${employeeobject.profileUrl}" class="mini-avatar" id="assigned-${employeeobject.id}" onclick="showInfo(${employeeobject.id})">`;
-
     // change the capacity
     capacity[room]--;
 
@@ -419,7 +423,6 @@ function unassign(id) {
     let employeeIndex = employeesArray.findIndex(emp => emp.id == id);
     let employeeobject = employeesArray[employeeIndex];
     employeeobject.assigned = false;
-
 
     // change the capacity
     capacity[employeeobject.room]++;
