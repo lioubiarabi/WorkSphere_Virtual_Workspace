@@ -1,10 +1,12 @@
 // get data from localStorage
-let employeesData = JSON.parse(localStorage.getItem("data"));
-if(!employeesData) {
-   (async()=> {
-    let res = await fetch("./assets/employees.json");
-    employeesData = await res.json();
-    localStorage.setItem("data", JSON.stringify(employeesData));
+let storedData = localStorage.getItem("data");
+let employeesData = JSON.parse(storedData) || {"idCounter": 0, "employeesArray": [] };
+if (!storedData) {
+    (async () => {
+        let res = await fetch("./assets/employees.json");
+        employeesData = await res.json();
+        localStorage.setItem("data", JSON.stringify(employeesData));
+        putItems();
     })()
 }
 
@@ -21,6 +23,9 @@ let required = ["reception", "archive", "security", "servers"];
 
 // render the employees function
 function putItems() {
+    // update the localStorage
+    localStorage.setItem("data", JSON.stringify(employeesData));
+
     //render the assigned employees in each zone
     for (room in capacity) {
         let assignedEmployees = employeesData.employeesArray.filter(emp => emp.assigned && emp.room == room);
