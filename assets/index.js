@@ -179,7 +179,8 @@ formModal.addEventListener("submit", (e) => {
     if (isValid) {
         if (editMode.active) {
             // update the employee in the array and update
-            employeesData.employeesArray[editMode.index] = newEmployee;
+            let original = employeesData.employeesArray[editMode.index];
+            employeesData.employeesArray[editMode.index] = { ...original, ...newEmployee };
         } else {
             //give the object an id and add it to the employees array
             newEmployee.id = employeesData.idCounter;
